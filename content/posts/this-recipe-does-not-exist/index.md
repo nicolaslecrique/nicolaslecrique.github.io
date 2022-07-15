@@ -1,9 +1,13 @@
 ---
-title: "My First Post"
+title: "This recipe does not exist, with Pytorch and Transformers"
 date: 2022-07-15T10:48:07+02:00
 draft: false
 math: true
+resources:
+- name: "featured-image"
+  src: "featured-image.png"
 ---
+
 
 
 
