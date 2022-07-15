@@ -1,15 +1,18 @@
 ---
-title: "This recipe does not exist, with Pytorch and Transformers"
+title: "ThisRecipeDoesNotExist, with Pytorch and Transformers"
 date: 2022-07-15T10:48:07+02:00
 draft: false
 math: true
+description: "A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of NLP"
+images: []
 resources:
 - name: "featured-image"
   src: "featured-image.png"
 ---
 
+A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of the standard NLP use case.
 
-
+<!--more-->
 
 # How are you
 
