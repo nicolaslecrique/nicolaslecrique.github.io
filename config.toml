@@ -4,3 +4,4 @@ title = 'My New Hugo Site'
 theme = "LoveIt"
 
 markup.highlight.noClasses=false
+publishDir = "docs"
