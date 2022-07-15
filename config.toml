@@ -2,5 +2,5 @@ baseURL = 'https://nicolaslecrique.github.io'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "LoveIt"
-
+publishDir= "docs"
 markup.highlight.noClasses=false
