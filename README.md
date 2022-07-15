@@ -1,4 +1,6 @@
 
+## Development
+
 In debug, run website using
 
 > hugo serve --disableFastRender -D
@@ -6,3 +8,11 @@ In debug, run website using
 * -D to use drafts in posts folder without building to public folder
 * --disableFastRender because it advised on LoveIt theme (https://hugoloveit.com/theme-documentation-basics/)
 
+## Deployment
+
+* set `draft: false` in header section of the post
+* run
+
+> hugo --minify
+
+to build /docs folder (will be deployed to github pages)
