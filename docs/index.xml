@@ -1,1 +1,7 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>My New Hugo Site</title><link>https://nicolaslecrique.github.io/</link><description>This is my cool site</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://nicolaslecrique.github.io/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>My New Hugo Site</title><link>https://nicolaslecrique.github.io/</link><description>This is my cool site</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 15 Jul 2022 10:48:07 +0200</lastBuildDate><atom:link href="https://nicolaslecrique.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Post</title><link>https://nicolaslecrique.github.io/posts/my-first-post/</link><pubDate>Fri, 15 Jul 2022 10:48:07 +0200</pubDate><author>Author</author><guid>https://nicolaslecrique.github.io/posts/my-first-post/</guid><description><![CDATA[How are you fine
+Subtitle finefine
+Subtitle 2 Some content
+subtitle 3 gras italic barré lol
+retrait retrait2
+def fix_hostname(hostname): hostname = re.sub(r&#39;[\\/:&#34;*?&lt;&gt;|]+&#39;, &#34;-&#34;, hostname) hostname = hostname.lower() return hostname hostname = fix_hostname(device[&#34;name&#34;]) func GetTitleFunc(style string) func(s string) string { switch strings.ToLower(style) { case &#34;go&#34;: return strings.Title case &#34;chicago&#34;: return transform.NewTitleConverter(transform.ChicagoStyle) default: return transform.NewTitleConverter(transform.APStyle) } } $\int_{-\infty}^{\infty} e^{-x^2} dx$.
+$$\int_{-\infty}^{\infty} e^{-x^2} dx$$.]]></description></item></channel></rss>
