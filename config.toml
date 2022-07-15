@@ -1,7 +1,6 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://nicolaslecrique.github.io'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "LoveIt"
 
 markup.highlight.noClasses=false
-publishDir = "docs"
