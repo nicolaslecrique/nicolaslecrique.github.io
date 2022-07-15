@@ -2,3 +2,5 @@ _site
 .sass-cache
 .jekyll-metadata
 vendor/
+resources/_gen/**
+.hugo_build.lock
