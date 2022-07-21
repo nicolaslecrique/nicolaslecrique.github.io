@@ -1,13 +1,12 @@
 ---
-title: "Une Croissance Verte est elle possible? Sortons des idéologies et calculons"
+title: 'Une Croissance Verte est elle possible? Sortons des idéologies et calculons'
 date: 2022-07-15T10:48:07+02:00
 draft: true
 math: true
-description: ""
+description: 
 images: []
-resources:
+resources: null
 ---
-
 
 ## Croissance...
 
@@ -32,7 +31,7 @@ Il faut donc faire 52% de plus avec plus de 5 fois mois. Cela veut dire amélior
 ## Qu'est ce qui pollue ?
 
 Voici [ce qui emmet le plus de gaz à effet de serre en France](https://www.statistiques.developpement-durable.gouv.fr/lempreinte-carbone-des-francais-reste-stable):
-* Les transports (individuels mais aussi marchandises)
+* Les transports (individuels mais aussi de marchandises)
 * L'alimentation
 * Le chauffage
 * Le fabrication de béton et d'acier (bâtiment)
@@ -47,16 +46,16 @@ Citez-moi un secteur économique "dématérialisé", et je vous trouverai les b�
 Dans 28 ans, supposons que l'on ait réussi, entre autres, à:
 
 * Remplacer la totalité du parc de voitures (voir de camions) par des voitures électriques: ([2 à 3 fois plus efficace](https://presse.ademe.fr/2017/12/etude-le-vehicule-electrique-dans-la-transition-ecologique-en-france.html#:~:text=Une%20berline%20%C3%A9lectrique%20%C3%A9met%20en,CO2%E2%80%93eq.).)
-* Isoler tous nos logements et remplacer la totalité des chaudières par des pompes à chaleur ([4 à 5 fois plus efficace](https://www.economiedenergie.fr/les-emissions-de-co2-par-energie/))
+* Isoler tous nos bâtiments et remplacer la totalité des chaudières par des pompes à chaleur ([4 à 5 fois plus efficace](https://www.economiedenergie.fr/les-emissions-de-co2-par-energie/))
 * Réduit massivement l'empreinte carbone de la production de béton, d'acier, du numérique et du textile ([1,5](https://www.modeintextile.fr/coton-biologique-aurait-impact-climat-50-eleve-coton-traditionnel/) à [2 fois plus efficace](https://www.ouest-france.fr/environnement/climat/le-beton-bas-carbone-est-il-vraiment-ecologique-ecebaf86-b729-11eb-b73a-358c628dc742))
 * Augmenter massivement la production d'electricité pour brancher tout ça, et ce sans emmetre trop de CO2
 * Ne pas créer de nouveaux usages fortement émetteurs (bitcoin 2.0? metaverse en 3D 16K? Tourisme spatial?)
 
 ## On est loin du compte
 
-Quelque soit le secteur, on est loin du facteur 8. Et c'est sans compter sur tous les secteurs pour lesquels beaucoup moins de gains d'efficacités sont attendus (aviation, transport de marchandises, agriculture).
+Quelque soit le secteur, on est loin du facteur 8. Et c'est sans compter sur tous les secteurs pour lesquels les gains d'efficacités possibles sont marginaux (aviation, transport de marchandises, agriculture).
 
-Tout mis bout à bout et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
+Tout mis bout à bout et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
 
 ## Les technologies du future
 
@@ -107,4 +106,4 @@ Ce n'est pas moi qui le dit, ce sont les calculs.
 On décroira tôt ou tard, de gré ou de force.
 
 
-Si l'on refuse cette décroissance, on se dirige vers 
+Si l'on refuse cette décroissance, on se dirige vers
