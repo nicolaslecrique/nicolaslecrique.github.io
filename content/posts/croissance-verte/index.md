@@ -55,16 +55,16 @@ Dans 28 ans, supposons que l'on ait réussi, entre autres, à:
 
 Quelque soit le secteur, on est loin du facteur 8. Et c'est sans compter sur tous les secteurs pour lesquels les gains d'efficacités possibles sont marginaux (aviation, transport de marchandises, agriculture).
 
-Tout mis bout à bout et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
+Tout mis bout à bout, et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
 
-Avec ces hypothèses, on obtient donc une division par 2 des émissions de CO2 de moitié (1.52/3), loin de la division par 5 nécessaire.
+Avec ces hypothèses, on obtient donc une division par 2, au lieu de 5 nécessaires, des émissions de CO2 (1.52/3).
 
 ## Les technologies du future
 
 Dans les 28 ans qui viennent, d'autres innovations technologiques viendrons peut-être améliorer notre efficacité sur certains points.
 
 Peut-être, mais:
-* Il y a des limites physiques indépassables. Les lois de la thermodynamique pour le chauffage par exemple.
+* Il y a des limites physiques indépassables.
 * C'est maintenant qu'il faut commencer à installer nos pompes à chaleur si l'on veut avoir terminé dans 28 ans. Idem pour les voitures.
 
 ## Les abeilles aiment la chaleur non?
@@ -99,11 +99,12 @@ Que [Bernard Arnaud laisse son jet au garage](https://www.alternatives-economiqu
 * OUI, il nous faut des pompes à chaleur, mais aussi des logements plus petits, dans lesquels on met moins de choses.
 * OUI, il nous faudra [des vaches qui pêtent moins](https://www.sciencesetavenir.fr/nature-environnement/les-vaches-francaises-emettent-autant-de-gaz-en-un-an-que-15-millions-de-voitures_9752), des [avions à hydrogène](https://www.h2-mobile.fr/actus/avion-hydrogene/), du [côton bio](https://www.modeintextile.fr/coton-biologique-aurait-impact-climat-50-eleve-coton-traditionnel/) et des [smartphones écolos](https://www.fairphone.com/fr/). Mais il faudra aussi manger moins de viande, voyager moins loin et moins souvent, et globalement consommer moins.
 
-En un mot, il nous faudra **décroître**.
+En un mot, il nous faudra **décroître**. Ou au grand minimum ne pas continuer à croître.
 
 Ce n'est pas moi qui le dit, ce sont les calculs. 
 
 ## Et si on ne veut pas?
+
 
 On décroira tôt ou tard, de gré ou de force.
 
