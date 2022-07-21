@@ -3,8 +3,8 @@ title: 'Une Croissance Verte est elle possible? Sortons des idéologies et calcu
 date: 2022-07-15T10:48:07+02:00
 draft: true
 math: true
-description: 
 images: []
+description: null
 resources: null
 ---
 
@@ -56,6 +56,8 @@ Dans 28 ans, supposons que l'on ait réussi, entre autres, à:
 Quelque soit le secteur, on est loin du facteur 8. Et c'est sans compter sur tous les secteurs pour lesquels les gains d'efficacités possibles sont marginaux (aviation, transport de marchandises, agriculture).
 
 Tout mis bout à bout et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
+
+Avec ces hypothèses, on obtient donc une division par 2 des émissions de CO2 de moitié (1.52/3), loin de la division par 5 nécessaire.
 
 ## Les technologies du future
 
