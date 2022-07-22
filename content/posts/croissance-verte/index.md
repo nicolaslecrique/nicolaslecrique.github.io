@@ -1,18 +1,18 @@
 ---
-title: 'Une croissance verte est-elle possible? Sortons des idéologies et calculons'
+title: 'Une croissance verte est-elle crédible? Calculons'
 date: 2022-07-15T10:48:07+02:00
-draft: true
+draft: false
 math: true
 images: []
 description: null
-resources: null
+resources:
+- name: "featured-image"
+  src: "featured-image.jpg"
 ---
 
-Peut-on concilier croissance économique de long terme et écologie ?
+Sortons des idéologies, et faisons un rapide calcul pour voir si l'on peut concilier croissance économique de long terme et écologie.
 
 <!--more-->
-
-Sur les plateaux télé, les adeptes de la croissance verte et de la décroissance se taxent d'idéologues sans jamais démontrer concrètement ce que ça veut dire. Alors Calculons.
 
 ## Croissance...
 
@@ -32,7 +32,7 @@ Partons du principe que cela veut dire respecter l'accord de Paris. Un français
 
 ## = Croissance verte
 
-Il faut donc, en 28 ans, faire 52% de plus avec 5 fois mois, et donc améliorer notre *efficacité climatique* (la capacité à créer de la richesse sans trop émettre de gaz à effet de serre) d'un facteur 8,3 ($1.52*\frac{11}{2}$).
+Il faut donc, en 28 ans, faire moitié plus avec 5 fois moins, et donc améliorer notre *efficacité climatique* (la capacité à créer de la richesse sans trop émettre de gaz à effet de serre) d'un facteur 8,3 ($1.52*\frac{11}{2}$).
 
 ## Qu'est ce qui pollue ?
 
