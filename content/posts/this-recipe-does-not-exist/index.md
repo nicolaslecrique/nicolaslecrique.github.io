@@ -1,7 +1,7 @@
 ---
 title: "How to build a Transformer model from scratch with 3000 samples? A case study of ThisDishDoesNotExist."
 date: 2022-07-15T10:48:07+02:00
-draft: false
+draft: true
 math: true
 description: "Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?"
 images: []
