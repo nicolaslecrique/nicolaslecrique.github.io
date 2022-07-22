@@ -35,7 +35,7 @@ But in my experience, ouside of NLP and CV, there is a lot of domain-specific ca
 
 <!-- Genre de GIF SUR "I have a plan" -->
 
-Building a model from scratch is a daunting task, so you need a plan. That's what we will do here, explaining at each step:
+Building a model from scratch is a daunting task, so we need a plan. That's what we will do here, explaining at each step:
 * The thought process
 * The actual implementation (in PyTorch) on the example of *ThisDishDoesNotExists*
 
@@ -55,7 +55,7 @@ Building a model from scratch is a daunting task, so you need a plan. That's wha
 
 ## 1. Define the business objective
 
-
+This is important to not
 
 
 

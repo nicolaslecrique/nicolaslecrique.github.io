@@ -20,7 +20,7 @@ Qu'est-ce qu'une société en **"croissance"** ?
 
 Quand on nous promet la croissance, on peut supposer que ce n'est pas 0,01%.
 
-Basons nos calculs sur 1,5%. C'est bien peu pour financer les différentes promesses de n'importe quel parti politique, mais cela correspond globalement au [prévisions à moyen terme](https://www.budget.gouv.fr/reperes/finances-publiques/articles/presentation-du-programme-de-stabilite-2021-2027).
+Basons nos calculs sur 1,5%. C'est bien peu pour financer les différentes promesses de n'importe quel parti politique, mais cela correspond globalement aux [prévisions à moyen terme](https://www.budget.gouv.fr/reperes/finances-publiques/articles/presentation-du-programme-de-stabilite-2021-2027).
 
 1,5% de croissance par an, c'est +52% ($1.05^{28}$) de PIB en 2050. Donc moitié plus de services publics, de loisirs, de km parcourus, de consommation, de m² dans nos maisons.
 
@@ -63,7 +63,10 @@ Quelque soit le secteur, on est loin du facteur 8. Et c'est sans compter sur tou
 
 Tout mis bout à bout, et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
 
-Avec ces hypothèses, on obtient donc une division par 2, au lieu de 5 nécessaire, des émissions de CO2 ($\frac{1.52}{3}$).
+Avec ces hypothèses de croissance et de gains d'efficacité, on obtient plutôt une division par 2 des émissions de CO2 ($\frac{1.52}{3}$), au lieu de 5 nécessaire.
+
+Pour remettre les choses en perspective, sur les 30 dernières années, les émissions en France ont baissées de [19%](https://www.statistiques.developpement-durable.gouv.fr/les-facteurs-devolution-des-emissions-de-co2-liees-lenergie-en-france-de-1990-2019). 
+
 
 ## Il est pas beau mon nouveau Hummer électrique?
 
