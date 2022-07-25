@@ -55,3 +55,26 @@ Juste en dessous
 
 Avions
 
+
+
+===================
+
+Vers quoi on va:
+
+https://www.i4ce.org/dou-viennent-les-cinq-nouveaux-scenarios-du-giec-climat/
+
+* On fait des efforts, mais pas au taqué:
+    * 2°C à 2050, 3°C à 2100
+    * 2°C à 2050, 4°C à 2100
+
+En France:
+* 3°C à 2050 => Italie ou Espagne en moyenne, Liban pour le sud de la france
+* 5°C à 2100 => Grèce en moyenne, Tunisie pour le sud de la france
+
+
+
+
+
+
+
+

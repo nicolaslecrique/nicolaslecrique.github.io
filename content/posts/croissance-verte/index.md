@@ -20,7 +20,7 @@ Qu'est-ce qu'une société en **"croissance"** ?
 
 Quand on nous promet la croissance, on peut supposer que ce n'est pas 0,01%.
 
-Basons nos calculs sur 1,5%. C'est bien peu pour financer les différentes promesses de n'importe quel parti politique, mais cela correspond globalement aux [prévisions à moyen terme](https://www.budget.gouv.fr/reperes/finances-publiques/articles/presentation-du-programme-de-stabilite-2021-2027).
+Basons nos calculs sur 1,5%. C'est peu pour financer les promesses de n'importe quel parti politique, mais cela correspond aux [prévisions à moyen terme](https://www.budget.gouv.fr/reperes/finances-publiques/articles/presentation-du-programme-de-stabilite-2021-2027).
 
 1,5% de croissance par an, c'est +52% ($1.05^{28}$) de PIB en 2050. Donc moitié plus de services publics, de loisirs, de km parcourus, de consommation, de m² dans nos maisons.
 
@@ -36,46 +36,46 @@ Il faut donc, en 28 ans, faire moitié plus avec 5 fois moins, et donc améliore
 
 ## Qu'est ce qui pollue ?
 
-Voici [ce qui émmet le plus de gaz à effet de serre en France](https://www.statistiques.developpement-durable.gouv.fr/lempreinte-carbone-des-francais-reste-stable):
-* Les transports (individuels mais aussi de marchandises)
-* L'alimentation
-* Le chauffage
-* La fabrication de béton et d'acier (bâtiment)
-* Les émissions importées (textile et numérique en tête)
+Voici [ce qui émmet le plus de gaz à effet de serre en France](https://www.notre-environnement.gouv.fr/rapport-sur-l-etat-de-l-environnement/themes-ree/defis-environnementaux/changement-climatique/emissions-de-gaz-a-effet-de-serre/article/panorama-des-emissions-francaises-de-gaz-a-effet-de-serre):
+* Les transports (surtout la voiture)
+* L'agriculture (surtout la viande)
+* Le chauffage (surtout le gaz et le fioul)
+* La construction (surtout le béton)
+* Les [biens](https://presse.ademe.fr/wp-content/uploads/2018/09/DP-Face-cache%CC%81e-des-biens-de%CC%81quipement-Septembre-2018.pdf) en général (surtout [textile](https://librairie.ademe.fr/cadic/1529/le-revers-de-mon-look.pdf) et [numérique](https://librairie.ademe.fr/cadic/2351/guide-pratique-face-cachee-numerique.pdf))
 
-Cela recouvre directement ou indirectement toutes les activités économiques!
+Cela recouvre directement ou indirectement toutes les activités économiques.
 
-Citez-moi un secteur économique "dématérialisé", et je vous trouverai les bâtiments, les machines et les transports dont il dépend.
 
 ## Allons-y à fond sur l'efficacité climatique
 
 Dans 28 ans, supposons que l'on ait réussi à:
 
-* Remplacer la totalité du parc de voitures (voir de camions) par des voitures électriques: [2 à 3 fois plus efficaces](https://presse.ademe.fr/2017/12/etude-le-vehicule-electrique-dans-la-transition-ecologique-en-france.html#:~:text=Une%20berline%20%C3%A9lectrique%20%C3%A9met%20en,CO2%E2%80%93eq.).
-* Isoler tous nos bâtiments et remplacer la totalité des chaudières par des pompes à chaleur: [4 à 5 fois plus efficaces](https://www.economiedenergie.fr/les-emissions-de-co2-par-energie/)
-* Réduit massivement l'empreinte carbone de la production de béton, d'acier, du numérique et du textile: [1,5](https://www.modeintextile.fr/coton-biologique-aurait-impact-climat-50-eleve-coton-traditionnel/) à [2 fois plus efficace](https://www.ouest-france.fr/environnement/climat/le-beton-bas-carbone-est-il-vraiment-ecologique-ecebaf86-b729-11eb-b73a-358c628dc742)
+* Remplacer la totalité du parc de voitures (voir de camions) par des voitures électriques: [2.5 fois plus efficace](https://www.je-roule-en-electrique.fr/sites/default/files/2021-11/Le%20bilan%20environnemental%20du%20v%C3%A9hicule%20%C3%A9lectrique_0.pdf).
+* Isoler tous nos bâtiments et remplacer la totalité des chaudières par des pompes à chaleur: ([4.5 fois plus efficace](https://www.economiedenergie.fr/les-emissions-de-co2-par-energie/))
 * Augmenter massivement la production d'électricité pour brancher tout ça, et ce sans émmetre trop de CO2
+* Réduit l'empreinte carbone de la production de béton
+([1/4 plus efficace](https://www.iea.org/news/cement-technology-roadmap-plots-path-to-cutting-co2-emissions-24-by-2050)) et de textile ([2 fois fois plus efficace](https://www.modeintextile.fr/coton-biologique-aurait-impact-climat-50-eleve-coton-traditionnel/))
 * Ne pas créer de nouveaux usages fortement émetteurs (voiture autonome,  metaverse en 3D 16K, tourisme spatial, bitcoin 2.0)
 
-## On est loin du compte
+## L'heure des comptes
 
 Quelque soit le secteur, on est loin du facteur 8. Et c'est sans compter sur tous les secteurs pour lesquels les gains d'efficacités attendus sont faibles (aviation, transport de marchandises, agriculture).
 
-Tout mis bout à bout, et même en s'y prenant bien, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent (et c'est déjà très ambitieux).
+Tout mis bout à bout, on voit bien qu'il est peu probable d'améliorer l'efficacité climatique globale de l'économie de plus d'un facteur 3 dans les 28 ans qui viennent, et c'est déjà très ambitieux.
 
 Avec ces hypothèses de croissance et de gains d'efficacité, on obtient plutôt une division par 2 des émissions de CO2 ($\frac{1.52}{3}$), au lieu de 5 nécessaire.
 
-Pour remettre les choses en perspective, sur les 30 dernières années, les émissions en France ont baissées de [19%](https://www.statistiques.developpement-durable.gouv.fr/les-facteurs-devolution-des-emissions-de-co2-liees-lenergie-en-france-de-1990-2019). 
+Pour remettre les choses en perspective, sur les 30 dernières années, les émissions en France ont baissées de [19%](https://www.statistiques.developpement-durable.gouv.fr/les-facteurs-devolution-des-emissions-de-co2-liees-lenergie-en-france-de-1990-2019), en bonne partie en raison des délocalisations. 
 
 
-## Il est pas beau mon nouveau Hummer électrique?
+## L'effet rebond: Il est pas beau mon Hummer électrique?
 
 * Si le moteur de ma voiture consomme moins, [j'achète une plus grosse voiture](https://www.automobile-propre.com/breves/le-nouveau-hummer-electrique-fait-un-carton/).
 * Si je dépense moins pour mon chauffage, je chauffe un peu plus.
 
-ça s'appelle [l'effet rebond](https://fr.wikipedia.org/wiki/Effet_rebond_(%C3%A9conomie)). Il est massif, et il faudra une forte volonté politique pour le limiter.
+C'est [l'effet rebond](https://fr.wikipedia.org/wiki/Effet_rebond_(%C3%A9conomie)). Il a jusqu'à présent annihilé l'essentiel des gains d'efficacité, et il faudra une forte volonté politique pour le limiter.
 
-## Les abeilles aiment la chaleur
+## Le CO2, et après?
 
 Tout cela ne concerne que les émissions de gaz à effet de sert. Pour autant
 * Les papillons et les abeilles ne butinent pas le béton, fût-il vert.
@@ -87,26 +87,26 @@ La majorité des activités économiques (et a fortiori leur croissance) ont un 
 
 Dans les 28 ans qui viennent, d'autres innovations technologiques viendront améliorer notre efficacité sur certains points.
 
-Peut-être, mais
-* C'est maintenant qu'il faut commencer à remplacer nos voitures, nos chaudières et nos avions si l'on veut avoir terminé dans 28 ans.
-* Il y a des [limites physiques indépassables](https://fr.wikipedia.org/wiki/Thermodynamique)
+Peut-être, mais c'est maintenant qu'il faut commencer à remplacer nos voitures, nos chaudières et nos avions si l'on veut avoir terminé dans 28 ans.
 
 
-## Contre-argument 2: Jouer sur les chiffres
+## Contre-argument 2: Couper les cheveux en 4
 
-On peut toujours couper les cheveux en 4, remettre en question les hypothèses de gain d'efficacité sur un secteur ou un autre, et trouver un expert particulièrement optimiste.
+On peut toujours jouer sur les chiffres:
 
-On peut se contenter d'une croissance plus faible, 1% ou moins.
+* Calculer différemment les emissions actuelles
 
-Mais on est si loin du compte que la conclusion restera la même.
+* Revoir les hypothèses de gain d'efficacité, et trouver un expert particulièrement optimiste.
+
+* Se contenter d'une croissance plus faible, 1% ou même moins.
+
+Les chiffres pris ici viennent de sources officielles, et ne sont pas spécialement pessimistes. Mais même en les ajustant encore, on est si loin du compte que la conclusion restera la même.
 
 ## Contre-argument 3:  Prendre l'argent aux riches
 
-Quand on demande de la croissance, au fond ce que l'on veut, c'est du pouvoir d'achat.
+Quand on demande de la croissance, au fond ce que l'on veut, c'est de l'argent pour soi, du pouvoir d'achat. Et si plutôt que de croître, on redistribuait?
 
-Et si plutôt que de croître, on redistribuait?
-
-L'argent ne devrait pas pouvoir acheter un droit à polluer. Mais attention, les 10% des ménages les plus aisés émettent [2 fois plus](https://www.cairn.info/revue-de-l-ofce-2020-5-page-73.htm) que les plus modestes tout en gagnant [10 fois plus](https://www.insee.fr/fr/statistiques/5371205?sommaire=5371304). A PIB constant, Robin des bois augmenterait les émissions de CO2.
+Plus on est riche, plus en pollue, c'est vrai. Mais attention, les 10% des ménages les plus aisés émettent [2 fois plus](https://www.cairn.info/revue-de-l-ofce-2020-5-page-73.htm) que les plus modestes tout en gagnant [10 fois plus](https://www.insee.fr/fr/statistiques/5371205?sommaire=5371304). A PIB constant, Robin des bois augmenterait les émissions de CO2.
 
 La redistribution ne peut être qu'une partie de la solution.
 
@@ -131,7 +131,7 @@ Le coeur du sujet ici, c'est la prise en compte de la durabilité dans ce que l'
 
 Si l'on considère cela comme une création de richesse, alors la croissance verte est sans-doute possible.
 
-Mais attention, ce n'est pas qu'une question de calcul, il faut que les habitudes de consommation changent, et donc que **tout le monde**, de gré ou de force, achete beaucoup moins mais mieux.
+Mais attention, ce n'est pas qu'une question de calcul, il faut que les habitudes de consommation changent, et donc que tout le monde, **de gré ou de force**, achete beaucoup moins mais mieux.
 
 Et si c'est cela le secret de la croissance verte, alors autant le dire directement, la différence avec la décroissance n'est plus que comptable et sémantique:
 
