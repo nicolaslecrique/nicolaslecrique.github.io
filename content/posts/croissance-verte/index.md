@@ -16,13 +16,11 @@ Sortons des idéologies, et faisons un rapide calcul pour voir si l'on peut conc
 
 ## Croissance...
 
-Qu'est-ce qu'une société en **"croissance"** ?
-
-Quand on nous promet la croissance, on peut supposer que ce n'est pas 0,01%.
+A partir de quand peut-on considérer une société en **"croissance"** ?
 
 Basons nos calculs sur 1,5%. C'est peu pour financer les promesses de n'importe quel parti politique, mais cela correspond aux [prévisions à moyen terme](https://www.budget.gouv.fr/reperes/finances-publiques/articles/presentation-du-programme-de-stabilite-2021-2027).
 
-1,5% de croissance par an, c'est +52% ($1.05^{28}$) de PIB en 2050. Donc moitié plus de services publics, de loisirs, de km parcourus, de consommation, de m² dans nos maisons.
+1,5% de croissance par an, c'est +52% ($1.05^{28}$) de PIB en 2050. Donc moitié plus de services publics, de loisirs, de joujoux pour petits et grands, de m² dans nos maisons.
 
 ## + Verte
 
