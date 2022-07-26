@@ -34,3 +34,11 @@ resources:
 * Cela va créer un ralentissement au USA et donc dans le reste du monde
 * L'inflation va obliger les politiques à augmenter les prestations
 * Si la russie arrête carrément les les importations: catastrophes=>inflation à fond, crash économique en allemagne, italie et donc nous.
+
+
+=======
+
+* Les relocalisation + le developpement de la chine + la raréfication des matières premières + la pression sociale
+l'inflation va continuer.
+
+* faiblesse de l'euro

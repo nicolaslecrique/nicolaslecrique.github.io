@@ -36,7 +36,7 @@ But in my experience, ouside of NLP and CV, there is a lot of domain-specific ca
 <!-- Genre de GIF SUR "I have a plan" -->
 
 Building a model from scratch is a daunting task, so we need a plan. That's what we will do here, explaining at each step:
-* The thought process
+* The theory behind this step
 * The actual implementation (in PyTorch) on the example of *ThisDishDoesNotExists*
 
 ## The Plan
@@ -55,7 +55,38 @@ Building a model from scratch is a daunting task, so we need a plan. That's what
 
 ## 1. Define the business objective
 
-This is important to not
+### Theory
+
+Before going down the rabbit hole of Deep Learning, let's take a step back and think about what we actually want. This is important for two reasons:
+* A simpler model could do the trick, even a ruled-based one. And if so, you should NOT use Deep Learning as it will be more expensive to create, run, and maintain.
+* While you will be working on the intricacies of your model, you might need to go back to your business objective to determine what is important and what is not.
+
+### Implementation
+
+For our use case, here is the business context:
+
+* To create meal plans for people with eating problems, we need a large pool of recipes that are both tasty and meet harsh dietetic criteria.
+* We already have 3000 recipes, but for a given person with its own set of constraints (e.g.: diabatic and gluten allergic), most of them are not usable.
+* We need even more recipes, but ideas are hard to come by.
+
+> To meet this challenge, we need a tool that generates recipe ideas. Those ideas will then be filtered and improved upon by Dietitians.
+
+
+
+## 2. Specify your technical constraints
+
+
+
+
+============
+
+
+
+
+
+Generate ideas of potential recipe
+
+ of *ThisDishDoesNotExists*:
 
 
 

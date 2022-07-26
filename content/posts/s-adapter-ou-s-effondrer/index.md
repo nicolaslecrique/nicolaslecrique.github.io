@@ -72,6 +72,30 @@ En France:
 * 5°C à 2100 => Grèce en moyenne, Tunisie pour le sud de la france
 
 
+========
+
+Simu 2°C: ademe, personne de la camagne ou urbaine
+ce qu'implique le changement de vie
+
+
+======
+
+Tu préfères:
+* ne plus prendre l'avion, rouler dans une petite voiture electrique, ne plus manger de boeuf
+te chauffer à la pompe à chaleur
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
