@@ -53,10 +53,11 @@ Cela recouvre directement ou indirectement toutes les activités économiques.
 Dans 28 ans, supposons que l'on ait réussi à:
 
 * Remplacer la totalité du parc de voitures (voir de camions) par des voitures électriques: [2.5 fois plus efficace](https://www.je-roule-en-electrique.fr/sites/default/files/2021-11/Le%20bilan%20environnemental%20du%20v%C3%A9hicule%20%C3%A9lectrique_0.pdf).
-* Isoler tous nos bâtiments et remplacer la totalité des chaudières par des pompes à chaleur: ([4.5 fois plus efficace](https://www.economiedenergie.fr/les-emissions-de-co2-par-energie/))
-* Augmenter massivement la production d'électricité pour brancher tout ça, et ce sans émmetre trop de CO2
+* Isoler tous nos bâtiments et remplacer la totalité des chaudières par des pompes à chaleur: [4.5 fois plus efficace](https://www.economiedenergie.fr/les-emissions-de-co2-par-energie/))
+* Augmenter massivement la production d'électricité pour brancher tout ça, et ce sans émmetre plus de CO2
 * Réduit l'empreinte carbone de la production de béton
 ([1/4 plus efficace](https://www.iea.org/news/cement-technology-roadmap-plots-path-to-cutting-co2-emissions-24-by-2050)) et de textile ([2 fois fois plus efficace](https://www.modeintextile.fr/coton-biologique-aurait-impact-climat-50-eleve-coton-traditionnel/))
+* Stopper la progression exponentielle de l'empreinte du numérique, aujourd'hui de [9% par an](https://theshiftproject.org/article/pour-une-sobriete-numerique-rapport-shift/)
 * Ne pas créer de nouveaux usages fortement émetteurs (voiture autonome,  metaverse en 3D 16K, tourisme spatial, bitcoin 2.0)
 
 ## L'heure des comptes
@@ -133,9 +134,9 @@ Le coeur du sujet ici, c'est la prise en compte de ce que l'on appelle [l'effet 
 
 Si l'on considère cela comme une création de richesse, alors on peut **théoriquement** concilier croissance et baisse de production.
 
-Mais attention, ce n'est pas qu'une question de calcul, il faut que les habitudes de consommation drastiquement, et donc que tout le monde, **de gré ou de force**, achete beaucoup moins mais mieux.
+Mais attention, ce n'est pas qu'une question de calcul, il faut que les habitudes de consommation changent drastiquement, et que tout le monde, **de gré ou de force**, achete beaucoup moins mais mieux.
 
-Et si c'est cela le secret de la croissance verte, alors autant le dire directement, la différence avec la décroissance n'est plus que comptable et sémantique:
+Et si c'est cela le secret de la croissance verte, alors autant le dire directement, la différence avec ce que pronent les partisants de la décroissance n'est plus que comptable et sémantique:
 
 > Croissance verte = Décroissance
 
