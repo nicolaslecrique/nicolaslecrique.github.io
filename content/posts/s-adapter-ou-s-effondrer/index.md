@@ -1,11 +1,11 @@
 ---
-title: "s'adapter ou s'effondrer"
+title: s'adapter ou s'effondrer
 date: 2022-07-15T10:48:07+02:00
 draft: true
 math: true
-description: ""
+description: 
 images: []
-resources:
+resources: null
 ---
 
 l'argent ne donne pas un droit à polluer plus
@@ -85,20 +85,16 @@ Tu préfères:
 te chauffer à la pompe à chaleur
 
 
+======
 
+Effondrement des sociétés
+l'Europe a une densite de population adaptée à son climat.
+Dans les 50 ans
+1) troubles majeur en Inde, bingladesh, Afrique, Amérique du Sud
+2) guerres, famines, migrations, terrorisme
+3) en Europe : on ne pourra plus compter sur une production massive et réguliere des pays en développement. Tout sera beaucoup plus cher.
+5) problèmes d'approvisionnement en gaz, pétrole. => Tout sera beaucoup plus cher
+6) production agricole (sécheresse, manque d'eau, insectes ..) va diminuer et devenir irrégulière. => Inflation
+6) grogne sociale, extrémisme. qui prendra des décisions encore pire pour l'économie, l'environnement, les minorités. Tensions entre les pays.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+... pendant ce temps on pense iphone, shein, tiktok, suv,
