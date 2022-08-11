@@ -113,7 +113,7 @@ Plus on est riche, plus en pollue, c'est vrai. Mais attention, les 10% des ména
 
 La redistribution ne peut être qu'une partie de la solution.
 
-## Contre-argument 4:  Une autre croissance
+## Une autre croissance
 
 Revenons sur notre formule:
 
@@ -132,20 +132,18 @@ Le coeur du sujet ici, c'est la prise en compte de ce que l'on appelle [l'effet 
 * Remplacer 20 [vestes shein](https://fr.shein.com/SHEIN-Double-Breasted-Crop-Jacket-p-875037-cat-1776.html) à 11€ (#ThanksOuïghours) par une [patagonia](https://eu.patagonia.com/fr/fr/product/womens-alplight-down-pullover/85555.html?dwvar_85555_color=BRLG&cgid=root) garantie à vie à 200€: inflation ou création de richesse?
 * Remplacer 3 smartphones irreparables jeté au bout de [20 mois](http://www.journaldunet.com/diaporama/0610-mobile/4.shtml), par un seul plus cher mais [garanti 5 ans](https://shop.fairphone.com/fr/): inflation ou création de richesse?
 
-Si l'on considère cela comme une création de richesse, alors on peut **théoriquement** concilier croissance et baisse de production.
+Si l'on considère cela comme une création de richesse, alors on peut **théoriquement** concilier croissance en PIB et baisse de production en volume.
 
-Mais attention, ce n'est pas qu'une question de calcul, il faut que les habitudes de consommation changent drastiquement, et que tout le monde, **de gré ou de force**, achete beaucoup moins mais mieux.
+Mais attention, ce n'est pas qu'une question de calcul, il faut que les habitudes de consommation changent drastiquement, et que tout le monde, **de gré ou de force**, consomme beaucoup moins mais mieux.
 
-Et si c'est cela le secret de la croissance verte, alors autant le dire directement, la différence avec ce que pronent les partisants de la décroissance n'est plus que comptable et sémantique:
+Et si c'est cela le secret de la croissance verte, alors autant le dire directement, la différence avec ce que pronent les partisants de la décroissance n'est plus que comptable et sémantique.
 
-> Croissance verte = Décroissance
+> Croissance verte (en € de PIB) = Décroissance (en quantité de biens et services)
 
-## Conclusion
+## Au-delà des batailles sémantiques
 
 * OUI, il nous faut des voitures électriques, mais aussi moins de voitures, moins grandes, faisant moins de km, moins vite.
-* OUI, il nous faut des pompes à chaleur, mais aussi des logements plus petits, dans lesquels on met moins de choses que l'on garde plus longtemps.
+* OUI, il nous faut des pompes à chaleur, mais aussi des logements plus petits, dans lesquels on met moins de choses que l'on change moins souvent.
 * OUI, il nous faut [des vaches qui pêtent moins](https://www.sciencesetavenir.fr/nature-environnement/les-vaches-francaises-emettent-autant-de-gaz-en-un-an-que-15-millions-de-voitures_9752), des [avions à hydrogène](https://www.h2-mobile.fr/actus/avion-hydrogene/), du [côton bio](https://www.modeintextile.fr/coton-biologique-aurait-impact-climat-50-eleve-coton-traditionnel/) et des [smartphones écolos](https://www.fairphone.com/fr/). Mais il faut aussi manger moins de viande, voyager moins loin et moins souvent, et globalement consommer moins.
 
-En un mot, il nous faut **décroître**. Ou croître très différemment si vous préferez ;-)
-
-
+En un mot, il nous faut **décroître**. Appelons ça croissance verte si vous préferez.
