@@ -202,4 +202,94 @@ if __name__ == '__main__':
 
 ## Numpy
 
-TODO
+```python
+import numpy as np
+
+# --- Initialization
+from_python_array = np.array([[1, 2, 3], [4, 5, 6]])  # [[1 2 3], [4 5 6]]
+zeros = np.zeros((2, 3), dtype=float)  # [[0. 0. 0.], [0. 0. 0.]], "float" is the default
+ones = np.ones((2, 3))  # [[1. 1. 1.], [1. 1. 1.]]
+memory_not_initialized = np.empty((2, 3))
+# 'like' init functions work also with zeros_like, empty_like...
+same_shape_as_model = np.zeros_like(from_python_array)  # [[0. 0. 0.], [0. 0. 0.]]
+step_by_step = np.arange(2, 9, 2)  # [2, 4, 6, 8], (min, max, step) like python "range"
+linear_space = np.linspace(0, 10, 5)  # (min, max, nb_points) [ 0., 2.5, 5., 7.5, 10.]
+identity = np.eye(3)  # identity matrix of shape (3, 3)
+lower_triangular = np.tri(3)  # triangular matrix of shape (3, 3)
+
+# --- sort
+arr = np.array([[1.0, 3.0], [20.0, 10.0]])
+arr.sort()  # inplace
+sorted_copy = np.sort(arr, axis=-1)  # sort along specified axis, here last (-1) axis
+
+# --- see array characteristics
+nb_dimensions = arr.ndim
+total_nb_elts = arr.size
+tuple_of_size_by_dim = arr.shape
+
+# --- reshape
+# -1 to let numpy infer the size on this dim (only one), here it gives a (4, 1, 1) tensor
+reshaped = np.reshape(arr, newshape=(-1, 1, 1))
+
+# --- squeeze and expand (wrap, unwrap)
+# add dim on specified index: [[1. 3.], [10. 20.]] -> [ [[1. 3.]], [[10. 20.]] ]
+expanded = np.expand_dims(arr, axis=1)
+# remove specified dims (all by default) where size is 1
+# here we remove dim one added by expand_dims -> [[1. 3.], [10. 20.]]
+squeezed = np.squeeze(expanded, axis=1)
+
+# --- indexing and slicing
+# NB: those operations don't create a new array in memory but just a view
+arr = np.array([[11., 12., 13.], [21., 22., 23.], [31., 32., 33.]])
+
+# basic slicing, like python
+by_index = arr[1, 2]  # 23
+by_slice = arr[0, 1:3:1]  # [12, 13]
+
+# fancy indexing, specific to numpy
+by_list_of_indexes = arr[:, [0, 2]]  # [[11. 13.], [21. 23.], [31. 33.]]
+
+# boolean indexing, specific to numpy (use broadcasting)
+bool_arr = arr > 21  # [[False False False], [ False  True  True], [ True  True  True]]
+flat_when_filtered_on_condition_of_same_shape = arr[arr > 21]  # [22. 23. 31. 32. 33.]
+filtered_by_dim = arr[arr.sum(-1) > 40, :]  # [[21. 22. 23.], [31. 32. 33.]]
+
+# assigning with indexing, specific to numpy
+modified = np.copy(arr)
+modified[:, :] = 1.0  # [[1. 1. 1.], [1. 1. 1.], [1. 1. 1.]]
+
+# --- concat
+# concatenate array args must have the same number of dims
+row_to_concat = np.expand_dims([41, 42, 43], 0)  # [[41 42 43]]
+col_to_concat = np.expand_dims([14, 24, 34], -1)  # [[14] [24] [34]]
+with_forth_row = np.concatenate((arr, row_to_concat), axis=0)
+with_forth_col = np.concatenate((arr, col_to_concat), axis=-1)
+
+# --- operations
+# term by term
+term_by_term = (arr + arr - arr) * arr / arr
+# usual aggregations
+min, sum = arr.min(), arr.sum(axis=-1)  # 11, [36. 66. 96.]
+# matrix operations
+# more complex linear algebra operations are better dealt with SciPy
+transposed = arr.T
+dot_product = arr @ arr
+
+# --- broadcasting
+# dimensions are compared from right (inner) to left (outer) dimension
+# 2 dims are compatibles if they are equals or one is of size 1
+broadcast_single_number = arr * 2
+broadcast_vec = arr * [1, 10, 100]  # [[11. 120. 1300.], [21. 220. 2300.], [31. 320. 3300.]]
+# broadcast (2, 3, 3) with (3, 3), term by term op applied to all (3, 3) inner matrices
+wrapped_arr = np.expand_dims(arr, axis=0)
+concat_wrapped_arr = np.concatenate((wrapped_arr, wrapped_arr), axis=0)
+broadcast_matrix = concat_wrapped_arr * [[1, 10, 100], [2, 20, 200], [3, 30, 300]]
+# [[[  11.  120. 1300.]
+#   [  42.  440. 4600.]
+#   [  93.  960. 9900.]]
+#
+#  [[  11.  120. 1300.]
+#   [  42.  440. 4600.]
+#   [  93.  960. 9900.]]]
+
+```
