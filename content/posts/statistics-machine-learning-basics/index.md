@@ -1,7 +1,7 @@
 ---
 title: 'Statistics and Machine Learning, the basics'
-date: 2022-07-15T10:48:07+02:00
-draft: true
+date: 2022-09-01T10:48:07+02:00
+draft: false
 math: true
 images: []
 description: null
@@ -12,6 +12,7 @@ resources:
 
 The objective of this post is to recapitulate the basics of statistics and machine learning following a glossary form.
 
+<!--more-->
 
 # Basic Maths 
 
@@ -233,7 +234,7 @@ Let's recapitulate:
 * *Momentum* smooth the gradient to reduce noise
 * *RMSProp* adapt the learning rate to the average scale of the gradient
 
-*Adam* combine both techniques.
+*Adam* combines both techniques.
 
 NB: In practice, *Adam* often converges faster than pure momentum, but model generalization may be worst.
 
@@ -248,11 +249,13 @@ All parameters externals (not learned) to the model (*batch size*, *learning rat
 
 $y=\frac{1}{1+e^{-x}}$
 
-Usual output layer for binary classification
+Usual output layer for binary classification. Rescale $]-\infty, +\infty[$ to $]0,1[$ so it's interpretable as a probability.
 
 ### Softmax
 
+$y_i=\frac{e^{x_i}}{\sum_{i=1}^{n}e^{x_i}}$
 
+Usual output layer for classification with $n$ classes. Sum to $1$ so it's interpretable as probabilities.
 
 ### ReLU
 
@@ -262,37 +265,8 @@ Usual activation function of intermediate dense layers, it introduce a non linea
 
 There is a lot of varation of it (GELU, Leaky ReLu...)
 
-TODO ICI: J'en suis a "Adam"
 
-## Common Heuristics
-
-### Dropout (model, regularization)
-
-Common regularization technique. It consists in adding a layer that will *drop* (i.e. set to $0$) intermediate dimensions randomly at a given probability $P$.
-
-At training time, we rescale (i.e. divide by $1-P$) the remaining values to that expectation remains the same. 
-
-At test time, dropout layer is ignored.
-
-### Data augmentation (data)
-
-Increasing the amount of training data by adding modified copies of raw data. e.j: various rotation of images.
-
-### Weight decay (loss, regularization)
-
-It has been proven that models generalize better when model parameters stay close to zero.
-
-As for *Ridge regression*, we modify loss function to penalize the $L2$-norm of the vector $w$ of all models parameters, the penalization factor $\lambda_{wd}$ is called *weight decay*
-
-$L_{wd}(w)=L(w)+\lambda_{wd}||w||^2$
-
-We can directly plug it in the *Gradient descent* formula using
-
-$\nabla L_{wd} = \nabla L + 2\lambda_{wd}w$
-
-### Early stopping (training, regularization)
-
-On successive *epochs* of training, we sometime empirically see that past a certain point, *validation error* starts to increases while *training error* continue to decreases. Model is overfitting. *Early stopping* consists in stopping earning at this point (before training error stabilizes itself)
+## Model Heuristics
 
 ### Batch normalization
 
@@ -316,11 +290,58 @@ $
 
 
 
+### Dropout (model, regularization)
+
+Common regularization technique. It consists in adding a layer that will *drop* (i.e. set to $0$) intermediate dimensions randomly at a given probability $P$.
+
+At training time, we rescale (i.e. divide by $1-P$) the remaining values to that expectation remains the same. 
+
+At test time, dropout layer is ignored.
+
+### Residual connection
+
+Deep architectures suffer from a problem called *Vanishing gradient*: gradients become close to zero far from output layers.
+
+Residual connections "skip" layers so every layers are closer to output.
+
+For a given layer fonction $F(x)$, the residual connection is:
+
+$y=F(x)+x$
+
+
+## Data Heuristics
+
+### Data augmentation (data)
+
+Increasing the amount of training data by adding modified copies of raw data. e.j: various rotation of images.
+
+## Loss Heuristics
+
+### Weight decay (loss, regularization)
+
+It has been proven that models generalize better when model parameters stay close to zero.
+
+As for *Ridge regression*, we modify loss function to penalize the $L2$-norm of the vector $w$ of all models parameters, the penalization factor $\lambda_{wd}$ is called *weight decay*
+
+$L_{wd}(w)=L(w)+\lambda_{wd}||w||^2$
+
+We can directly plug it in the *Gradient descent* formula using
+
+$\nabla L_{wd} = \nabla L + 2\lambda_{wd}w$
+
+## Training Heuristics
+
+### Early stopping (training, regularization)
+
+On successive *epochs* of training, we sometime empirically see that past a certain point, *validation error* starts to increases while *training error* continue to decreases. Model is overfitting. *Early stopping* consists in stopping earning at this point (before training error stabilizes itself)
+
+
+
 # Natural Language Processing
 
 ## metrics
 
-### Precision and Recall
+### Precision, recall and F1 Score
 
 used for binary classification tasks like document retrieval.
 
@@ -328,6 +349,7 @@ used for binary classification tasks like document retrieval.
 
 * __Recall__: $ \frac{true\ positive}{true\ positive + false\ negative}$. 1 when all relevant items are found
 
+* __F1 Score__: harmonic mean of recall and prevision (harmonic penalize imbalanced models between recall and precision): $\frac{2}{\frac{1}{recall}+\frac{1}{precision}}$
 
 <!---
 ##  ------------- TODO ------------
@@ -349,10 +371,8 @@ used for binary classification tasks like document retrieval.
 * TODO: parralel python / sklearn / pytorch sur tous les cas pertinants
 * p-valeur
 * layers
-* softmax
-* relu...
 * batch, epochs
-* F1-SCORE
+* Siamese network / Triplet loss
 
 * feature selection
 * regularization
