@@ -293,3 +293,119 @@ broadcast_matrix = concat_wrapped_arr * [[1, 10, 100], [2, 20, 200], [3, 30, 300
 #   [  93.  960. 9900.]]]
 
 ```
+
+
+## Pytorch
+
+This is a minimal working example of a PyTorch project
+
+```python
+import torch
+from torch.utils.data import Dataset, TensorDataset, DataLoader
+from torch import nn
+from torch.optim import Optimizer
+from torch.optim.lr_scheduler import StepLR
+
+# init seed for replicable results
+torch.manual_seed(42)
+
+# ------------------- 1. build data ----------------------
+# dummy 'Xor' dataset: should return true if (x_1 < 0.5 and x_2 < 0.5) or (x_1 > 0.5 and x_2 > 0.5)
+dataset_size: int = 100000
+features_tensor: torch.Tensor = torch.rand((dataset_size, 2))  # 2 features
+# build boolean tensor of labels then convert it to numerical values
+boolean_labels_tensor: torch.Tensor = torch.logical_xor(features_tensor[:, 0] < 0.5, features_tensor[:, 1] < 0.5)
+labels_tensor: torch.Tensor = torch.where(boolean_labels_tensor, 1., 0.)
+
+# Dataset is an abstraction over an iterator on data and is often re-implemented
+dataset: TensorDataset = TensorDataset(features_tensor, labels_tensor)
+# split dataset between training, validation and test set.
+train_set, val_set, test_set = torch.utils.data.random_split(
+    dataset, [int(dataset_size * 0.8), int(dataset_size * 0.15), int(dataset_size * 0.05)])
+
+# Dataloader wrap a dataset (to manage shuffling, batching, etc. generically)
+train_dataloader = DataLoader(train_set, batch_size=64, shuffle=True)
+val_dataloader = DataLoader(val_set, batch_size=64, shuffle=True)
+test_dataloader = DataLoader(test_set, batch_size=64, shuffle=True)
+
+
+# ------------------- 2. build model -------------------
+class DenseModel(torch.nn.Module):
+    def __init__(self):
+        super(DenseModel, self).__init__()
+        self.dense = nn.Sequential(
+            nn.Linear(2, 8), nn.ReLU(),
+            nn.Linear(8, 8), nn.ReLU(),
+            nn.Linear(8, 8), nn.ReLU(),
+            nn.Linear(8, 1)
+        )
+        # No sigmoid at the end, it's managed by the loss function
+
+    def forward(self, x):
+        output = self.dense(x)  # output (8,1) tensor
+        one_d_output = output.squeeze()  # remove useless (size=1) dimension
+        return one_d_output
+
+
+dense_model = DenseModel()
+
+# ------------------- 3. loss function -------------------
+# Combine Sigmoid layer and logit loss (for numerical stability)
+logit_loss_fct = nn.BCEWithLogitsLoss()
+
+
+# ------------------- 4. evaluation function -------------------
+def evaluate(model, dataloader, loss_fct, epoch):
+    total_loss = 0
+    nb_items = 0
+    nb_corrects = 0
+    for batch_idx, batch in enumerate(dataloader):
+        batch_input_tensor = batch[0]
+        batch_label_tensor = batch[1]
+        predictions = model(batch_input_tensor)  # 1D tensor of size len(batch)
+        loss_result = loss_fct(predictions, batch_label_tensor).squeeze()
+        total_loss += loss_result
+
+        # use broadcasting to compute the proportion of correct predictions
+        is_result_positive = predictions > 0.0  # if y > 0 then \sigma(y)>0.5 and thus model predict "1.0" class
+        is_expected_positive = batch_label_tensor == 1.0
+        is_output_correct = is_result_positive == is_expected_positive
+        nb_corrects += torch.sum(is_output_correct).squeeze()
+        nb_items += batch_input_tensor.size(dim=0)
+
+    print(f'epoch {epoch} mean loss: {total_loss/nb_items}, accuracy: {100*nb_corrects/nb_items}%')
+
+
+# ------------------- 5. optimization loop -------------------
+learning_rate = 0.1
+optimizer: Optimizer = torch.optim.SGD(dense_model.parameters(), learning_rate)  # optimization algorithm (adam, SGD..)
+scheduler: StepLR = torch.optim.lr_scheduler.StepLR(optimizer, 1, gamma=0.95)  # reduce learning rate on optimizer
+
+batch_size = 5
+nb_epochs = 60
+for epoch_index in range(nb_epochs):
+
+    # Turn on the train mode (change behavior in layers like dropout and batchNorm)
+    dense_model.train()
+    for batch_idx, batch in enumerate(train_dataloader):
+
+        # 1. initialize gradients on model
+        optimizer.zero_grad()
+        # 2. forward pass
+        output = dense_model(batch[0])
+        # 3. compute loss
+        loss_result = logit_loss_fct(output, batch[1])
+        # 4. backward pass update gradients
+        loss_result.backward()
+        # 5. gradient clipping, improve performance, cf. https://arxiv.org/pdf/1905.11881.pdf
+        torch.nn.utils.clip_grad_norm_(dense_model.parameters(), 0.5)
+        # 6. update model parameters using computed gradients during backward pass
+        optimizer.step()
+
+    # compute loss and accuracy on validation set
+    dense_model.eval()  # Turn model back to eval mode
+    evaluate(dense_model, val_dataloader, logit_loss_fct, epoch_index)
+
+    scheduler.step()  # decrease learning rate after each epoch
+
+```
