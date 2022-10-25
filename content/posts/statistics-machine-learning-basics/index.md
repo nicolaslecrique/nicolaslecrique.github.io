@@ -30,11 +30,37 @@ In such case, $P$ column vectors are the *eigenvectors* and $D$ diagonal values 
 
 Some interesting properties:
 * All symmetric matrix (i.e. $M=M^T$) is diagonalizable by an orthogonal matrix (i.e. $P^TP=PP^T=I$, and so $P^T=P^{-1}$ and column/row vector norms =1)
-* $M^n=PD^nP^{-1}$ and so $M^TM=PD^2P^{-1}$
+* $M^n=PD^nP^{-1}$ and so $M^TM=PD^2P^{-1}$ and $M^{-1}=PD^{-1}P^{-1}$
 
+## Sphering (Whitening) of a Matrix
+
+Let $X$ be a $(p,n)$-dimensional matrix of $n$ samples and $p$ features, we suppose it's centered.
+
+We are looking for a transformation (a basis) in which the dimensions are uncorrelated and of unit variance. that is, we are looking for a $(p,p)$-matrix $W$ such as
+
+$Y=WX$
+
+and
+
+$Cov(Y):=\frac{1}{n}YY^T=I$
+
+with $I$ the identity matrix. We have:
+
+$Cov(X):=\frac{1}{n}XX^T=PDP^{-1}$
+
+with $P$, $D$ the SVD decomposition of $Cov(X)$.
+
+So by replacing $Y$ by $WX$, then $XX^T$ by the SVD, we are looking for $W$ such as:
+
+$WPDP^{-1}W^T=I$
+
+It is solved by taking $W:=D^{-\frac{1}{2}}P^{-1}$
+
+It exists and is easy to compute because $D$ is diagonal.
+
+[A good reference](https://theclevermachine.wordpress.com/2013/03/30/the-statistical-whitening-transform/)
 
 # Statistics Principles
-
 
 ## Regression, classification, clustering
 
@@ -149,9 +175,77 @@ $\hat{Y}=\frac{1}{1+\exp{X \beta}}$
 
 We can show it's a convex optimization problem (the second derivatives of CE with respect to all $\beta_j$ is positive) and can be solved with convex optimization algorithms (Newton...)
 
+## Linear/Quadratic Discriminant Analysis (LDA/QDA)
+
+LDA is a supervised classification algorithm.
+
+The hypothesis is:
+* Each class $k$ has a multivariate gaussian distribution with density $f_k(x):=P(X=x|C=k)$ with mean $(p)$-vector $\mu_k$ and covariance $(p,p)$-matrix $\Sigma_k$
+* $P(C=k)=\pi_k$
+* __For LDA__: all classes have the same covariance matrix $\Sigma$, only the mean vectors $\mu_k$ are differents
+
+For a given input vector $x$, we want to find the class $k$ such that:
+
+$k:=arg max_{k=1..K} P(C=k|X=x)$
+
+We get from *Bayes Theorem* that:
+
+$P(C=k|X=x)=P(X=x|C=k)\frac{P(C=k)}{P(X=x)}=f_k(x)\frac{\pi_k}{\sum_{l=1}^{K}f_l(x)\pi_l}$
+
+Since we just want to compare them, we can compute $\log (f_k(x)\pi_k)$ for every $k$ and remove factors common to all $k$. This gives us for every $k$ the *quadratic discriminant functions*:
+
+$\delta_k(x)=-\frac{1}{2}\log|\Sigma_k|-\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k)+\log\pi_k$
+
+To compute this function, we can see that we need to compute:
+* The inverse of the covariance matrix
+* The determinant $|\Sigma_k|$ of the covariance matrix
+
+To simplify this computation, we would like to find a basis in which it's enough to compute the distance to the *centroid* ($\mu_k$) of the distributions
+
+This is done by *Sphering* (*Whitening*) the data. Let:
+
+$\Sigma_k=U_kD_kU_k^T$
+
+be the SVD decomposition, we can derive the computation from the expression of $\delta_k(x)$ to see that:
+
+$\delta_k(x)=-\frac{1}{2}\log|\Sigma_k|-\frac{1}{2}||X^*-\mu_k^*||^2+\log\pi_k$
+
+with $X^*$ and $\mu_k^*$ be the transform of $X$ and $\mu_k$ in the sphered basis, that is:
+* $X^*:=D^{-\frac{1}{2}}U^TX$
+* $\mu_k^*:=D^{-\frac{1}{2}}U^T\mu_k$
+
+To sum it up, the LDA (or QDA) process is:
+* Compute $\Sigma$ ($\Sigma_k$) from the dataset 
+* Compute the SVD decomposition of $\Sigma$ ($\Sigma_k$)
+* Compute the determinant and the transformed class centroids $\mu_k^*$
+* For a given $x$, compute $x^*$ and its distance to the centroids
+* Classify $x$ to the class $k$ that minimizes $\delta_k(x)$
+
+### Use LDA as a Dimension reduction algorithm
+
+Suppose that we want to display the LDA classification in 2 dimensions. We want to find the axis that best split the different classes.
+
+The usual criteria used is to take the axis that maximizes the variance of the centroids. This is what PCA does. So we do the following PCA decomposition:
+
+Let $ \mu^*:=(\mu_1^*,..\mu_K^*)$ be the $(p,k)$-matrix of the centroids in the transformed bases. We decompose its covariance matrix using PCA:
+
+$Cov(\mu^*)=U_{\mu}^*D_{\mu}^*U_{\mu}^{*-1}$
+
+The columns of $U_{\mu}^*$ are the axis we are looking for. We get the coordinates of a vector $x$ by transforming to $x^*$ and taking the scalar products with $u_{\mu,0}, u_{\mu,1}$...
+
+
+> NB: In ESL and most blog posts that seems to base their explanation on it, the dimension reduction algorithm uses [ZCA Whitening](https://towardsdatascience.com/pca-whitening-vs-zca-whitening-a-numpy-2d-visual-518b32033edf) instead of PCA whitening (that it uses before), this explains the reference to $W^{-\frac{1}{2}}$ everywhere to do the whitening.
+
+#### Good references
+
+* [computation details of LDA in ESL](https://stats.stackexchange.com/questions/405541/computation-of-lda-in-elements-of-statistical-learning-4-3-2)
+
+* [Good explanation of dimension reduction](https://yangxiaozhou.github.io/data/2019/10/02/linear-discriminant-analysis.html)
+
+* [Another good explanation of LDA not based directly on ESL](https://www.stat.cmu.edu/~ryantibs/datamining/lectures/21-clas2.pdf)
+
 
 # Deep Learning
-
 
 ## Back propagation
 
