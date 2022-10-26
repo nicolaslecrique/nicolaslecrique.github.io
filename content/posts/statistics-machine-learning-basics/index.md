@@ -208,9 +208,12 @@ $\Sigma_k=U_kD_kU_k^T$
 
 be the SVD decomposition, we can derive the computation from the expression of $\delta_k(x)$ to see that:
 
-$\delta_k(x)=-\frac{1}{2}\log|\Sigma_k|-\frac{1}{2}||X^*-\mu_k^*||^2+\log\pi_k$
 
-with $X^*$ and $\mu_k^*$ be the transform of $X$ and $\mu_k$ in the sphered basis, that is:
+
+$\delta_k(x)=-\frac{1}{2}\log|\Sigma_k|-\frac{1}{2}||X^\*-\mu_k^\*||^2+\log\pi_k$
+
+
+with $X^\*$ and $\mu_k^\*$ be the transform of $X$ and $\mu_k$ in the sphered basis, that is:
 * $X^*:=D^{-\frac{1}{2}}U^TX$
 * $\mu_k^*:=D^{-\frac{1}{2}}U^T\mu_k$
 
@@ -295,7 +298,9 @@ When computing the gradient, it will be noisy (it changes at each batch) on some
 Momentum stabilizes gradient (removes noise) by replacing current batch gradient by an exponential moving average.
 
 
+
 $\nabla_{mom}^{n} L = \lambda_{mom}\nabla_{mom}^{n-1}L + (1-\lambda_{mom})\nabla L(w)$
+
 
 In practice:
 * Momentum factor $\lambda_{mom}$ is usually ~0.9
@@ -308,13 +313,13 @@ In practice:
 let $g_t^i$ the real gradient at step $t$ for the $i$-th parameter
 
 At each step and for each parameter:
-1) We evaluate the exponential moving average of the square of the size of the gradient $\bar{g}_t^{2,i}$. "$\bar{}$" for the average, "$^2$" for the value homogeneous to a square
+1) We evaluate the exponential moving average of the square of the size of the gradient $\bar{g}_t^{2,i}$. "$\bar{~}$" for the average, "$~^2$" for the value homogeneous to a square.
 
-$\bar{g}_t^{2,i}=\lambda_{rms}\bar{g}_{t-1}^{2,i}+(1-\lambda_{rms})(g_t^i)^2$
+$\bar{g}\_t^{2,i}=\lambda\_{rms}\bar{g}\_{t-1}^{2,i}+(1-\lambda\_{rms})(g\_t^i)^2$
 
 2) We scale le learning rate
 
-$\lambda_{lr-rms,t}^i=\lambda_{lr}*\frac{1}{\sqrt{\bar{g}_t^{2,i}+\epsilon}}$
+$\lambda_{lr-rms,t}^i=\lambda_{lr}\frac{1}{\sqrt{\bar{g}_t^{2,i}+\epsilon}}$
 
 3) We use this adapted learning rate for the next SGD step
 
