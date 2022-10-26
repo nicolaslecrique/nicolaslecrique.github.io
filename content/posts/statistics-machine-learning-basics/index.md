@@ -227,11 +227,11 @@ Suppose that we want to display the LDA classification in 2 dimensions. We want 
 
 The usual criteria used is to take the axis that maximizes the variance of the centroids. This is what PCA does. So we do the following PCA decomposition:
 
-Let $ \mu^*:=(\mu_1^*,..\mu_K^*)$ be the $(p,k)$-matrix of the centroids in the transformed bases. We decompose its covariance matrix using PCA:
+Let $\mu^*:=(\mu_1^\*,..\mu_K^\*)$ be the $(p,k)$-matrix of the centroids in the transformed bases. We decompose its covariance matrix using PCA:
 
-$Cov(\mu^*)=U_{\mu}^*D_{\mu}^*U_{\mu}^{*-1}$
+$Cov(\mu^\*)=U_{\mu}^\*D_{\mu}^\*U_{\mu}^{\*-1}$
 
-The columns of $U_{\mu}^*$ are the axis we are looking for. We get the coordinates of a vector $x$ by transforming to $x^*$ and taking the scalar products with $u_{\mu,0}, u_{\mu,1}$...
+The columns of $U_{\mu}^\*$ are the axis we are looking for. We get the coordinates of a vector $x$ by transforming to $x^*$ and taking the scalar products with $u_{\mu,0}^\*, u_{\mu,1}^\*$...
 
 
 > NB: In ESL and most blog posts that seems to base their explanation on it, the dimension reduction algorithm uses [ZCA Whitening](https://towardsdatascience.com/pca-whitening-vs-zca-whitening-a-numpy-2d-visual-518b32033edf) instead of PCA whitening (that it uses before), this explains the reference to $W^{-\frac{1}{2}}$ everywhere to do the whitening.
@@ -294,7 +294,8 @@ When computing the gradient, it will be noisy (it changes at each batch) on some
 
 Momentum stabilizes gradient (removes noise) by replacing current batch gradient by an exponential moving average.
 
-$\nabla_{mom}^{n} L = \lambda_{mom}*\nabla_{mom}^{n-1}L + (1-\lambda_{mom})\nabla L(w)$
+
+$\nabla_{mom}^{n} L = \lambda_{mom}\nabla_{mom}^{n-1}L + (1-\lambda_{mom})\nabla L(w)$
 
 In practice:
 * Momentum factor $\lambda_{mom}$ is usually ~0.9
