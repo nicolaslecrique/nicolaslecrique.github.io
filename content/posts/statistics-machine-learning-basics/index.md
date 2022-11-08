@@ -1,5 +1,5 @@
 ---
-title: 'Statistics and Machine Learning, the basics'
+title: 'Statistics and Machine Learning, the basics (WIP)'
 date: 2022-09-01T10:48:07+02:00
 draft: false
 math: true
@@ -450,6 +450,68 @@ used for binary classification tasks like document retrieval.
 * __Recall__: $ \frac{true\ positive}{true\ positive + false\ negative}$. 1 when all relevant items are found
 
 * __F1 Score__: harmonic mean of recall and prevision (harmonic penalize imbalanced models between recall and precision): $\frac{2}{\frac{1}{recall}+\frac{1}{precision}}$
+
+
+# Recommender systems
+
+The goal is to recommend the most relevant items to users. Most of the time, "recomending" an item means guessing the ratings that a user would give to any item given its rating for other items. One example is movie recommendations.
+
+## Collaborative filtering
+
+This applies well when:
+* We don't have natural feature vectors for items or users, and so we have to infer them from existing ratings (using some distance measure between users and between items)
+* We have a way to solve the *cold-start* problems (getting initial ratings for a new item or a new user).
+
+### Matrix Factorization
+
+Let's model the ratings as a $(nbUsers,nbItems)$ matrix $R$ containing the ratings. This matrix is *sparse* and we want to fill in the holes.
+
+We suppose that items and users can be modelized features called *latent factors*. Those features are the model parameters.
+
+We compute a measure of the distance between a user and an item using a dot-product. We then use a sigmoid function to scale the rating as needed.
+
+because a few lines of code are worth a thousand words, here is the model:
+
+```python
+import torch
+from torch import nn
+
+
+class MatrixFactorization(nn.Module):
+
+    def __init__(self, nb_users: int, nb_items: int, nb_factors: int):
+        super(MatrixFactorization, self).__init__()
+        self.user_embeddings = nn.Embedding(nb_users, nb_factors)
+        # some users might have a tendency to give only high or low ratings, this bias deal with it
+        self.user_bias = nn.Embedding(nb_users, 1)
+        self.item_embeddings = nn.Embedding(nb_items, nb_factors)
+        # same as for users
+        self.item_bias = nn.Embedding(nb_factors, 1)
+
+    # user_item_pairs_batch is a (batch_size, 2) tensor
+    def forward(self, user_item_pairs_batch: torch.Tensor):
+        batch_user_idx_s = user_item_pairs_batch[:, 0]
+        batch_item_idx_s = user_item_pairs_batch[:, 1]
+
+        batch_user_embeddings = self.user_embeddings[batch_user_idx_s]
+        batch_item_embeddings = self.item_embeddings[batch_item_idx_s]
+
+        # raw ratings by batch entry before bias and sigmoid post-processing
+        batch_raw_ratings = (batch_user_embeddings*batch_item_embeddings).sum(dim=1)
+        raw_ratings_biased = batch_raw_ratings + self.user_bias[batch_user_idx_s] + self.movie_bias[batch_item_idx_s]
+
+        # Scale ratings to [0,1]
+        return torch.sigmoid(raw_ratings_biased)
+```
+
+The loss function is usually just MSE.
+
+Of course, from this formulation, we can move to *Deep Learning Factorization* by using a more complex model than just a sigmoid of the embeddings product.
+
+
+## Content-based filtering
+
+
 
 <!---
 ##  ------------- TODO ------------

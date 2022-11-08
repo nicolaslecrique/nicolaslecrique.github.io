@@ -194,7 +194,7 @@ markup.highlight.noClasses=false
       title = ""
       # subtitle shown in home page (HTML format is supported)
       # 主页显示的网站副标题 (允许 HTML 格式)
-      subtitle = "Deep Learning, NLP and other things"
+      subtitle = "Deep Learning, science and other things"
       # whether to use typeit animation for subtitle
       # 是否为副标题显示打字机动画
       typeit = true
