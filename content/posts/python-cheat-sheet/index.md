@@ -409,3 +409,80 @@ for epoch_index in range(nb_epochs):
     scheduler.step()  # decrease learning rate after each epoch
 
 ```
+
+## Pandas
+
+```python
+import pandas as pd
+from datetime import datetime
+
+# ------ build dataframe ------
+df_by_cols = pd.DataFrame(
+    {"c1": [4, 5, 6], "c2": [7, 8, 9]},
+    index=["r1", "r2", "r3"])  # indexes are just row labels
+
+df_by_rows = pd.DataFrame(
+    [[4, 7, 10], [5, 8, 11]],
+    columns=['c1', 'c2', 'c3'])
+
+# df_from_csv = pd.read_csv('file.csv')
+
+# ------ melt (unpivot) / pivot ------
+df_funnel = pd.DataFrame(
+    [["u1", datetime(2222, 1, 1, 3,17,20), datetime(2222, 1, 1, 3,18,5), datetime(2222, 1, 1, 3, 21, 2)],
+    ["u2", datetime(2222, 1, 1, 4,18,20), datetime(2222, 1, 1, 4,18,40), datetime(2222, 1, 1, 4, 20, 2)]],
+    columns=['name', 'landing', 'signup', 'payment']
+)
+
+# Return:
+#     name event_type event_date
+# 0   u1    landing   03:17:20
+# 1   u2    landing   04:18:20
+# 2   u1     signup   03:18:05
+# ...
+df_funnel_by_event = pd.melt(
+    df_funnel,
+    id_vars='name',  # id columns
+    var_name='event_type',
+    value_name='event_date'
+)
+
+df_funnel_repivoted = pd.pivot(
+    df_funnel_by_event,
+    index='name',
+    columns=['event_type'],  # becomes column labels
+    values=['event_date']  # becomes new columns content
+)
+
+# ------ basic infos ------
+df_head = df_funnel.head()  # get first rows
+df_sample = df_funnel.sample()  # select a few rows randomly
+df_stats_by_col = df_funnel.describe()  # std, percentiles...by col
+df_funnel.info()  # print directly: count, Dtype...
+
+# ------ types ------
+df_types = df_funnel.dtypes  # type of each column
+with_landing_col_as_number = pd.to_numeric(df_funnel.landing)  # cast column
+
+# ------ filter ------
+filter_on_names = df_funnel.loc[[0,1], ['name', 'landing']]
+filter_on_ids = df_funnel.iloc[0:2, 0:2]  # first 2 rows and cols
+
+# ------ query ------
+# query is the preferred way (more readable and faster on big dataset)
+with_query = df_funnel.query('name == "u2" and landing > "2020-01-01"')
+# old way: build 1D-array of bool by row using broadcasting
+# then index with this bool array
+with_operator = df_funnel[df_funnel.name == 'u2']
+
+# ------ join (merge) ------
+left = pd.DataFrame([['k1', 'k2'], ['vl1', 'vl2']],columns=['k', 'vl'])
+right = pd.DataFrame([['k1', 'k3'], ['vr1', 'vr3']],columns=['k', 'vr'])
+# 'left': k1, k2. 'right': k1, k3, 'inner': k1, 'outer': k1, k2, k3
+pd.merge(left, right, how='left', on='k')  # ['k1', 'vl1', 'vr1'], k2
+
+# ------ group-by ------
+events_by_user = df_funnel_by_event.groupby('name')
+first_event_by_user = events_by_user.agg({'event_date': 'min', 'event_type': 'first'})
+
+```
