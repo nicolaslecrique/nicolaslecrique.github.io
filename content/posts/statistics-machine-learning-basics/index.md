@@ -1,6 +1,6 @@
 ---
 title: 'Statistics and Machine Learning, the basics (WIP)'
-date: 2022-09-01T10:48:07+02:00
+date: 2022-12-12T8:48:07+02:00
 draft: false
 math: true
 images: []
@@ -60,7 +60,31 @@ It exists and is easy to compute because $D$ is diagonal.
 
 [A good reference](https://theclevermachine.wordpress.com/2013/03/30/the-statistical-whitening-transform/)
 
-# Statistics Principles
+# Descriptive statistics
+
+## Hypothesis Testing and P-Value
+
+We start with a null hypothesis H0. The alternate hypothesis is H1.
+
+The *P-Value* is:
+
+$P$(Observed Results are consistent with H1 | H0 is true).
+
+We usually fix a threshold $p$ (e.g. 5%), and we reject the null hypothesis if P-value < $p$.
+
+## Confidence interval 
+
+For a given level $\gamma$ (e.g. 95%) and a estimated parameter $\theta$, a *confidence interval* for $\theta$ is a range $[\hat{\theta}^{min}, \hat{\theta}^{max}]$ such as
+
+$P(\hat{\theta}^{min} < \theta < \hat{\theta}^{max})=\gamma$
+
+$\theta$ is deterministic but unknown, the confidence interval is random and observed from an experience. It means that if we redo the experiment 100 times, the confidence interval will contain $\theta$ in average $\gamma$% of the times.
+
+In Practice, $\theta$ might be the mean of the distribution of a random variable $X$, and we will observe a great number of independent realizations of $X$ and construct a confidence interval around the observed average.
+
+
+# Statistical Learning Principles
+
 
 ## Regression, classification, clustering
 
@@ -124,7 +148,6 @@ $Var(\hat{f})=E[(\hat{f}-E[\hat{f}])^2]$
 There is *overfitting* when the *loss* is a lot better on the *training set* than on the *validation set*. It means that the learned function doesn't generalize well to unseen data. Common solutions are *regularization* techniques, using a simpler model, *feature selection*, *dimensionality reduction*, *early stopping*, *dropout*...
 
 There is *underfitting* when the *bias* is high and the *loss* is too high even on the training set. The common solutions are *feature engineering* and using a better more powerful model.
-
 
 # Base algorithms
 
