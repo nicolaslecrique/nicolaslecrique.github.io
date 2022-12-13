@@ -460,24 +460,46 @@ On successive *epochs* of training, we sometime empirically see that past a cert
 
 
 
-# Natural Language Processing
+# Classifications
 
 ## metrics
 
 ### Precision, recall and F1 Score
 
-used for binary classification tasks like document retrieval.
+Used for binary classification tasks.
 
-* __Precision__: $ \frac{true\ positive}{true\ positive + false\ positive}$. 1 when only relevant items are found 
+|  | Positive Label | Negative Label|
+|-------------------|----------------|----------------|
+| Predicted Positive              | True Positive  | False Positive |
+| Predicted Negative             | False Negative | True Negative |
+|                   |                |                |
 
-* __Recall__: $ \frac{true\ positive}{true\ positive + false\ negative}$. 1 when all relevant items are found
+"__True__" means __Correctly classified__ by the model  (either as positive or negative), "__Positive/Negative__" corresponds to the model prediction. 
+
+* __Precision__: $ \frac{true\ positives}{all\ predicted \ positives}$. Proportion of predicted positives that are really (labeled) positives. 1 when only relevant items are found. 
+
+* __Recall__: $ \frac{true\ positives}{all\ labeled\ positives}$. Proportion of really (labeled) positives predicted positives. 1 when all relevant items are found.
 
 * __F1 Score__: harmonic mean of recall and prevision (harmonic penalize imbalanced models between recall and precision): $\frac{2}{\frac{1}{recall}+\frac{1}{precision}}$
+
+### Classification Threshold, ROC Curve and AUC
+
+* __True Positive Rate (TPR)__: synonym of Recall
+* __False Positive Rate (FPR)__: $\frac{false\ positives}{all\ labeled\ negatives}$. Proportion of labeled negatives misclassified as positives.
+
+
+A binary classification model usually outputs a value between 0 and 1 (the output of a softmax) that can be interpreted as the probability of the example of being Positive. The __Classification (or Decision) Threshold__ is the minimal value for which an example is classified Positive.
+
+A high threshold will lead to a low TPR and a low FPR, a low threshold will lead to a high TPR and a high FPR
+
+The __ROC curve__ evaluates this trade-off at different threshold values by displaying TPR as a function of FPR.
+
+We want that curve to be as high as possible (=1) for any FPR level on Abscissa. A standard metric of classification quality is the __Area Under the Curve (AUC)__, which sums up the ROC curve in only one number.
 
 
 # Recommender systems
 
-The goal is to recommend the most relevant items to users. Most of the time, "recomending" an item means guessing the ratings that a user would give to any item given its rating for other items. One example is movie recommendations.
+The goal is to recommend the most relevant items to users. Most of the time, "recommending" an item means guessing the ratings that a user would give to any item given its rating for other items. One example is movie recommendations.
 
 ## Collaborative filtering
 
