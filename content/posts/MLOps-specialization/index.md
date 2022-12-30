@@ -134,7 +134,7 @@ Adding features. it's mainly useful for structured (and limited) data. E.g: addi
 it's important to keep track of experiments, it can be through a shared spreadsheet or a dedicated experiment tracking system (like [Weights & Biases](https://wandb.ai/site))
 
 Important features are:
-* Infos for __reproductibility__: code version, dataset, hyperparameters...
+* Infos for __replicability__: code version, dataset, hyperparameters...
 * Results (metrics, trained model...)
 
 #### Good data
@@ -144,4 +144,81 @@ A good dataset:
 * has consistent and unambiguous labeling 
 * is monitored for data/concept drift
 
+
+### Week 3: Why is data definition hard?
+
+#### structured vs unstructured, small vs big data
+
+* With unstructured data, you can often ask to label more data and use data augmentation.
+* Consistent labeling is always useful, but crucial on a small dataset (<10k samples)
+* On a small dataset, you can fix labels one by one, on a big dataset, you must improve the process (data extraction, labeling instructions)
+* big data sets can also have small data problems due to a long tail of rare events (like in search or product recommendation)
+
+#### Strategies to get consistent labeling?
+
+* Define clear labeling instructions
+* Add a new class to capture uncertainty
+* Improve input (more or better info) if labeling is hard
+* have several labelers label the same example to detect ambiguities in labeling
+* Merge classes if the distinction is not clear and unnecessary
+* If ambiguities cannot be fixed, use voting from multiple labelers
+
+#### Human Level Performance (HLP)
+
+* When __ground truth__ is defined by humans, HLP is often just a measure of ambiguity in labeling.
+* Labeling inconsistencies make it both irrelevant and too easy to beat HLP 
+* It's useful to improve labeling consistency to improve both the model performance and the HLP to compare with.
+
+
+#### How much data to get?
+
+* At the start, the minimum you need to iterate as soon as possible on the 'data->model->error analysis' loop.
+* Then increase if needed, e.g. 2x (10x max), to not spend more time and money than needed. 
+
+
+#### Data Inventory process
+
+4 possible sources of data:
+* Already owned
+* Crowdsourced
+* Pay for labelers (in-house or outsourced)
+* Purchase existing dataset
+
+Compare each possible source on:
+* Cost
+* Time
+* Quantity
+* Quality
+* Privacy and regulatory constraints
+
+#### Who will label?
+
+* Do you need __SMEs (Subject Matter Experts)__?
+* Good practice: ML Engineers should do a small part of the labeling to understand the data and possible labeling issues.
+
+#### Data Pipeline
+
+Data often needs pre-processing steps (cleanup...). After the POC phase, it's important to ensure that the data pipeline is replicable and identical between modeling (training data) and production (for inference).
+
+#### Data lineage, data provenance, meta-data
+
+The pipeline can be a complex graph of steps and ML algorithms. For future diagnostic purposes, it's important to keep track of:
+* __Data provenance__: where does the data come from
+* __Data lineage__: what are the steps that have been involved in the production of each final data/prediction
+* __Meta-data__: what are the info associated with the production of the data (web browser, camera, localization...) 
+
+#### Balanced train/dev/test set
+
+On a small dataset, randomly splitting samples between train/dev/test can lead to a different proportion by class between train/dev/test sets. It's better to split sets such as each set has the same proportions.
+
+
+#### Scoping
+
+To choose what to work on:
+1. Brainstorm __business__ problems
+2. brainstorm potential AI solutions
+3. Assess the technical feasibility (using literature, and benchmarks...) and business value of solutions (ROI)
+4. Define key metrics (ML, Software and business). Find shared metrics on which business and tech people can agree.
+5. budget resources.
+6. Define a timeline and milestones
 
