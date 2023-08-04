@@ -1,7 +1,7 @@
 ---
 title: 'Notes from the Deep Reinforcement Learning Course by HuggingFace'
 date: 2022-12-27T10:48:07+02:00
-draft: true
+draft: false
 math: true
 images: []
 description: 'Kubernetes conepts'
