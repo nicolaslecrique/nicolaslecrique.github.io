@@ -1,10 +1,10 @@
 ---
 title: 'Notes from the Deep Reinforcement Learning Course by HuggingFace'
-date: 2022-12-27T10:48:07+02:00
+date: 2023-08-01T10:48:07+02:00
 draft: false
 math: true
 images: []
-description: 'Kubernetes conepts'
+description: ''
 resources:
 - name: "featured-image"
   src: "featured-image.jpg"
@@ -37,3 +37,6 @@ In **Value-based** methods, we learn a **value function** that maps a state to t
 Let $v_{\pi}$ be the *value function* when we follow the policy $\pi$, $R_t$ and $S_t$ random variables, respectively the reward and state at time $t$. We choose $\pi$ to maximize:
 
 $v_{\pi}(s)=E_{\pi}[\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s]$
+
+
+## UNIT 1. INTRODUCTION TO DEEP REINFORCEMENT LEARNING
