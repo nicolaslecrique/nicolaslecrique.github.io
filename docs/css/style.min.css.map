@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/Users/nicolas/dev/blog/nicolaslecrique.github.io",
+	"sourceRoot": "/Users/nicolas/dev/nicolaslecrique.github.io",
 	"sources": [
 		"themes/LoveIt/assets/css/style.scss",
 		"themes/LoveIt/assets/lib/normalize/normalize.css",
