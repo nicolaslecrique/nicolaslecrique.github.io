@@ -1,6 +1,6 @@
 ---
 title: 'DeepLearning.AI MLOps Specialization notes'
-date: 2022-12-27T10:48:07+02:00
+date: 2022-12-28T10:48:07+02:00
 draft: false
 math: true
 images: []
