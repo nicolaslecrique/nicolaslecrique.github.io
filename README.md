@@ -1,4 +1,13 @@
 
+## Installation
+
+After cloning the repository, run
+
+> git submodule init
+> git submodule update
+
+To install the hugo theme
+
 ## Development
 
 In debug, run website using
