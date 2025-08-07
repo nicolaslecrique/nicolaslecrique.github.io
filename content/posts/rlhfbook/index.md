@@ -39,17 +39,16 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) log \frac{P(x)}{Q(x)}$
 
 * $x$ a prompt, $y$ a completion
 * $\theta$: the parameters of the llm
-* $\pi_{\theta}: \pi_{\theta}[y|x]$, the __policy__ (the llm), a probability distribution over all possible completions. In RL, it is the __Agent__ ($\pi(a|s)$).
+* $\pi_{\theta}: \pi_{\theta}(y|x)$, the __policy__ (the llm), a probability distribution over all possible completions. In RL, it is the __Agent__ ($\pi(a|s)$).
 
 ### RL
-
 
  
 * __State__: $s_i$, a prompt in our case
 * __Action__: $a_i$, a completion in our case
-* __Reward function__: $r:r(s_i,a_i)=r_i \in \real$
-
-
+* __Reward function__: $r:r(s_i,a_i)=r_i \in \real$. In our case it's a model, we note it $r_{\theta_r}$ with $\theta_r$ its parameters.
+* __Trajectory__ $\tau:=(s_0, a_0, s_1...) \in \pi_\theta$. In our case it's only a pair prompt-completion of the probability space. 
+* __Objective function__: $J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r_{\theta_r}(s,a)]$. What we want to maximize. Here it's just finding the best model (parameterized by $\theta$) to maximize the expectation of the reward for all pairs prompt / completion. In general it would be over all trajectories with a time horizon and discount.
 
 ## 4 Training Overview
 
@@ -58,3 +57,7 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) log \frac{P(x)}{Q(x)}$
 
 ![RLHF standard loop.png](rlhf_rl_standard_loop.png)
 
+
+## 6 Preference Data
+
+* __Likert scale__: ranking between 2 options with degrees (strongly prefer A, weakly...)
