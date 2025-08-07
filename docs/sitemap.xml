@@ -1,1 +1,20 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://nicolaslecrique.github.io/posts/mlops-specialization/</loc><lastmod>2022-12-28T10:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/</loc><lastmod>2022-12-28T10:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/posts/</loc><lastmod>2022-12-28T10:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/posts/statistics-machine-learning-basics/</loc><lastmod>2022-12-12T08:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/posts/python-cheat-sheet/</loc><lastmod>2022-09-18T10:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/posts/adapt-transformer-architecture-to-set-generation/</loc><lastmod>2022-07-15T10:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/posts/croissance-verte/</loc><lastmod>2022-07-15T10:48:07+02:00</lastmod></url><url><loc>https://nicolaslecrique.github.io/categories/</loc></url><url><loc>https://nicolaslecrique.github.io/tags/</loc></url></urlset>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>http://localhost:1313/</loc><lastmod>2023-08-01T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/deep-reinforcement-learning-hugging-face-course/</loc><lastmod>2023-08-01T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/</loc><lastmod>2023-08-01T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/mlops-specialization/</loc><lastmod>2022-12-28T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/kubernetes-concepts/</loc><lastmod>2022-12-27T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/statistics-machine-learning-basics/</loc><lastmod>2022-12-12T08:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/dangers-journalisme-vulgarisation-scientifique/</loc><lastmod>2022-10-12T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/python-cheat-sheet/</loc><lastmod>2022-09-18T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/collapse/</loc><lastmod>2022-07-15T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/adapt-transformer-architecture-to-set-generation/</loc><lastmod>2022-07-15T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/this-recipe-does-not-exist/</loc><lastmod>2022-07-15T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/s-adapter-ou-s-effondrer/</loc><lastmod>2022-07-15T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/croissance-verte/</loc><lastmod>2022-07-15T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/posts/systeme-economique/</loc><lastmod>2022-07-15T10:48:07&#43;02:00</lastmod></url><url>
+            <loc>http://localhost:1313/categories/</loc></url><url>
+            <loc>http://localhost:1313/tags/</loc></url></urlset>

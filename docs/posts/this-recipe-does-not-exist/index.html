@@ -1,27 +1,390 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>ThisRecipeDoesNotExist, with Pytorch and Transformers - Nicolas Lecrique</title><meta name=Description content="A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of NLP"><meta property="og:title" content="ThisRecipeDoesNotExist, with Pytorch and Transformers"><meta property="og:description" content="A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of NLP"><meta property="og:type" content="article"><meta property="og:url" content="https://nicolaslecrique.github.io/posts/this-recipe-does-not-exist/"><meta property="og:image" content="https://nicolaslecrique.github.io/posts/this-recipe-does-not-exist/featured-image.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-07-15T10:48:07+02:00"><meta property="article:modified_time" content="2022-07-15T10:48:07+02:00"><meta property="og:site_name" content="Nicolas Lecrique"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://nicolaslecrique.github.io/posts/this-recipe-does-not-exist/featured-image.png"><meta name=twitter:title content="ThisRecipeDoesNotExist, with Pytorch and Transformers"><meta name=twitter:description content="A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of NLP"><meta name=application-name content="Nicolas Lecrique"><meta name=apple-mobile-web-app-title content="Nicolas Lecrique"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nicolaslecrique.github.io/posts/this-recipe-does-not-exist/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"ThisRecipeDoesNotExist, with Pytorch and Transformers","inLanguage":"en-us","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nicolaslecrique.github.io\/posts\/this-recipe-does-not-exist\/"},"image":[{"@type":"ImageObject","url":"https:\/\/nicolaslecrique.github.io\/posts\/this-recipe-does-not-exist\/featured-image.png","width":810,"height":539}],"genre":"posts","wordcount":84,"url":"https:\/\/nicolaslecrique.github.io\/posts\/this-recipe-does-not-exist\/","datePublished":"2022-07-15T10:48:07+02:00","dateModified":"2022-07-15T10:48:07+02:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"Nicolas Lecrique"},"description":"A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of NLP"}</script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css integrity=sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5 crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js integrity=sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script></head><body data-header-desktop=fixed data-header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="Nicolas Lecrique">Nicolas Lecrique</a></div><div class=menu><div class=menu-inner><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="Nicolas Lecrique">Nicolas Lecrique</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><a href=javascript:void(0); class="menu-item theme-switch" title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">ThisRecipeDoesNotExist, with Pytorch and Transformers</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>Nicolas Lecrique</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw" aria-hidden=true></i>&nbsp;<time datetime=2022-07-15>2022-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;84 words&nbsp;
-<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;One minute&nbsp;</div></div><div class=featured-image><img class=lazyload src=/svg/loading.min.svg data-src=/posts/this-recipe-does-not-exist/featured-image.png data-srcset="/posts/this-recipe-does-not-exist/featured-image.png, /posts/this-recipe-does-not-exist/featured-image.png 1.5x, /posts/this-recipe-does-not-exist/featured-image.png 2x" data-sizes=auto alt=/posts/this-recipe-does-not-exist/featured-image.png title="A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of NLP"></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
-<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#subtitle>Subtitle</a><ul><li><a href=#subtitle-2>Subtitle 2</a></li></ul></li></ul></nav></div></div><div class=content id=content><p>A step-by-step guide to harness the power of the Transformer architecture to generate sequential data outside of the standard NLP use case.</p><h1 id=how-are-you>How are you</h1><p>fine</p><h2 id=subtitle>Subtitle</h2><p>finefine</p><h3 id=subtitle-2>Subtitle 2</h3><p>Some content</p><h4 id=subtitle-3>subtitle 3</h4><p><strong>gras</strong>
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>How to build a Transformer model from scratch with 4000 samples? A case study of ThisDishDoesNotExist. - Nicolas Lecrique</title><meta name="Description" content="Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?"><meta property="og:title" content="How to build a Transformer model from scratch with 4000 samples? A case study of ThisDishDoesNotExist." />
+<meta property="og:description" content="Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/this-recipe-does-not-exist/" /><meta property="og:image" content="http://localhost:1313/posts/this-recipe-does-not-exist/featured-image.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-15T10:48:07+02:00" />
+<meta property="article:modified_time" content="2022-07-15T10:48:07+02:00" /><meta property="og:site_name" content="Nicolas Lecrique" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/posts/this-recipe-does-not-exist/featured-image.png" /><meta name="twitter:title" content="How to build a Transformer model from scratch with 4000 samples? A case study of ThisDishDoesNotExist."/>
+<meta name="twitter:description" content="Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?"/>
+<meta name="application-name" content="Nicolas Lecrique">
+<meta name="apple-mobile-web-app-title" content="Nicolas Lecrique"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/this-recipe-does-not-exist/" /><link rel="prev" href="http://localhost:1313/posts/s-adapter-ou-s-effondrer/" /><link rel="next" href="http://localhost:1313/posts/adapt-transformer-architecture-to-set-generation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How to build a Transformer model from scratch with 4000 samples? A case study of ThisDishDoesNotExist.",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/this-recipe-does-not-exist\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/localhost:1313\/posts\/this-recipe-does-not-exist\/featured-image.png",
+                            "width":  810 ,
+                            "height":  539 
+                        }],"genre": "posts","wordcount":  1346 ,
+        "url": "http:\/\/localhost:1313\/posts\/this-recipe-does-not-exist\/","datePublished": "2022-07-15T10:48:07+02:00","dateModified": "2022-07-15T10:48:07+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nicolas Lecrique"
+            },"description": "Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?"
+    }
+    </script>
+    
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+</head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nicolas Lecrique">Nicolas Lecrique</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nicolas Lecrique">Nicolas Lecrique</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">How to build a Transformer model from scratch with 4000 samples? A case study of ThisDishDoesNotExist.</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nicolas Lecrique</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-15">2022-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1346 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/this-recipe-does-not-exist/featured-image.png"
+        data-srcset="/posts/this-recipe-does-not-exist/featured-image.png, /posts/this-recipe-does-not-exist/featured-image.png 1.5x, /posts/this-recipe-does-not-exist/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/posts/this-recipe-does-not-exist/featured-image.png"
+        title="Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#deep-learning-into-the-void-a-step-by-step-guide-to-building-a-domain-specific-model">Deep (Learning) into the void: a step-by-step guide to building a domain-specific model.</a></li>
+    <li><a href="#the-plan">The Plan</a></li>
+    <li><a href="#1-define-the-business-objective">1. Define the business objective</a>
+      <ul>
+        <li><a href="#theory">Theory</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+        <li><a href="#theory-1">Theory</a></li>
+        <li><a href="#implementation-1">Implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-define-an-evaluation-metric-to-measure-your-progress">3. Define an <em>evaluation metric</em> to measure your progress</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#subtitle">Subtitle</a>
+      <ul>
+        <li><a href="#subtitle-2">Subtitle 2</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?</p>
+<blockquote>
+<p><strong>NB</strong>: This model was developed for the company Alantaya, which provides personalized meal plans to people with eating problems. I thank Alantaya and my manager Alain Bedu to let me use it in this article.</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="deep-learning-into-the-void-a-step-by-step-guide-to-building-a-domain-specific-model">Deep (Learning) into the void: a step-by-step guide to building a domain-specific model.</h2>
+<p>If you work on NLP or computer vision, building a new model usually follows the following script:</p>
+<ul>
+<li>Find a pre-trained model that does the closest thing to what you want</li>
+<li>fine-tune it on your limited data, and maybe add a few layers on top (the <em>head</em>) to make it do what you want</li>
+</ul>
+<p>This is <em>Transfer Learning</em>, and <a href="https://huggingface.co/" target="_blank" rel="noopener noreffer ">great libraries</a> exist to do just that.</p>
+<p>But in my experience, outside of NLP and CV, there are a lot of domain-specific cases where Deep Learning can bring value, but where there is:</p>
+<ul>
+<li>No pre-trained or standard model</li>
+<li>No big Dataset</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>Building a model from scratch is a daunting task, so we need a plan. That&rsquo;s what we will do here, explaining at each step:</p>
+<ul>
+<li>The theory behind this step</li>
+<li>The actual implementation (in PyTorch) on the example of <em>ThisDishDoesNotExists</em></li>
+</ul>
+<h2 id="the-plan">The Plan</h2>
+<ol>
+<li>Define the business objective</li>
+<li>Explore the <em>scientific literature</em> for potential solutions</li>
+<li>Define an <em>evaluation metric</em> to measure your progress</li>
+<li>Implement a <em>baseline</em>: the simplest model that can work</li>
+<li>Improve your model:
+<ul>
+<li>Architecture <!-- raw HTML omitted --></li>
+<li>hyperparameters</li>
+<li>Data augmentation</li>
+<li>Loss function</li>
+<li>Regularization <!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ol>
+<h2 id="1-define-the-business-objective">1. Define the business objective</h2>
+<h3 id="theory">Theory</h3>
+<p>Before going down the rabbit hole of Deep Learning, let&rsquo;s take a step back and think about what we want. This is important for two reasons:</p>
+<ul>
+<li>Based on your objective, a simpler model could do the trick, even a ruled-based one. And if so, you should NOT use Deep Learning as it will be more expensive to create, run, and maintain.</li>
+<li>While you will be working on the intricacies of your model, you might need to go back to your business objective to determine what is important and what is not.</li>
+</ul>
+<h3 id="implementation">Implementation</h3>
+<p>For our use case, here is the business context:</p>
+<h5 id="business-context">Business context</h5>
+<ul>
+<li>To create meal plans for people with eating problems, we need a large pool of recipes that are both tasty and meet harsh dietetic criteria.</li>
+<li>We already have 3000 recipes, but for a given person with its own set of constraints (e.g.: diabatic and gluten allergic), most of them are not usable. So we need even more recipes, but ideas are hard to come by.</li>
+</ul>
+<h5 id="deliverable">Deliverable</h5>
+<p>To meet this challenge, we need a tool that generates recipe ideas. By recipe, we mean a set of ingredients with their respective quantities, plus its kind (starter, main course, dessert, snack). Those recipes can then be filtered and improved upon by Dietitians.</p>
+<h5 id="non-goals">Non-goals</h5>
+<ul>
+<li>We don&rsquo;t need cooking instructions. Only ingredients + quantities are needed to automatically select recipes with interesting nutritional properties.</li>
+<li>We don&rsquo;t need all generated recipes to be realistic, as they will be filtered manually afterward.</li>
+</ul>
+<p>## 2. Explore the scientific literature for potential solutions</p>
+<h3 id="theory-1">Theory</h3>
+<p>You probably won&rsquo;t invent an entirely new deep learning architecture. The first thing you should do is look for standard machine learning tasks close to your use case.</p>
+<p>Those are tasks for which there is an extensive literature on how to approach them.</p>
+<blockquote>
+<p>Here is the magic link to get an overview of standard tasks and models: <a href="https://paperswithcode.com/sota" target="_blank" rel="noopener noreffer ">paperswithcode</a></p>
+</blockquote>
+<p>We might not be able to take the existing models as is, but you will draw inspiration from them.</p>
+<blockquote>
+<p>Good artists copy, great artists steal.</p>
+</blockquote>
+<p>Once you get the most likely candidates, compare them with each other and to your task at hand.</p>
+<ul>
+<li>How complex are they?</li>
+<li>How much data do they need?</li>
+<li>Are there any blog posts or open source implementations to help you?</li>
+<li>How do they deviate from your task?</li>
+<li>Can we manage those deviations?</li>
+</ul>
+<h3 id="implementation-1">Implementation</h3>
+<p>In the case of <em>ThisDishDoesNotExists</em>, the most obvious feature of the task is that it&rsquo;s <a href="https://en.wikipedia.org/wiki/Generative_model" target="_blank" rel="noopener noreffer ">generative</a>. That is, we must generate new samples from an existing distribution.</p>
+<h5 id="comparable-tasks-and-models">Comparable tasks and models</h5>
+<p>A simple CTRL+F &ldquo;generation&rdquo; on <a href="https://paperswithcode.com/sota" target="_blank" rel="noopener noreffer ">paperswithcode</a> will show you two common tasks on which there is plenty of research:</p>
+<ul>
+<li><a href="https://paperswithcode.com/task/image-generation" target="_blank" rel="noopener noreffer ">Image generation</a></li>
+<li><a href="https://paperswithcode.com/task/text-generation" target="_blank" rel="noopener noreffer ">Text generation</a></li>
+</ul>
+<p>For those 2 tasks, there are 3 broad classes of models often used:</p>
+<ul>
+<li>Variational Autoencoders</li>
+<li>Generative Adversarial Network</li>
+<li>Autoregressive Transformer Models</li>
+</ul>
+<p>The first two are mainly used for image generation while the transformer architecture is mainly used for text generation.</p>
+<h5 id="specific-constraints">Specific constraints</h5>
+<ul>
+<li>We only have access to a dataset of 4000 samples. This is a <strong>very small dataset</strong> for a generative model</li>
+<li>Unlike an image, if we model the recipe as a vector of quantities where each index of the vector corresponds to an ingredient, this vector is very <strong>sparse</strong>, about ten ingredients are activated (&gt;0) out of a few thousand.</li>
+<li>Unlike an image, there is no geometry between ingredients (distance and continuity between pixels)</li>
+<li>Unlike a text, there is no order between ingredients. A Dish is a set, not a sequence.</li>
+<li>Unlike a text, a dish is not just a set of ingredients (like a sentence is a sequence of words), but a set of ingredients associated with quantities.</li>
+<li>On top of the set of ingredients and quantities, we must associate with each dish a type (starter&hellip;)</li>
+</ul>
+<h4 id="comparison-of-model-classes">Comparison of model classes</h4>
+<p>There is no shortcut here. We must dig into the details of how models work to understand if and how we can adapt them to our needs.</p>
+<p>Here is the gist of my conclusions:</p>
+<ul>
+<li><strong>Generative Adversarial Network (GAN)</strong> is more of a strategy to create a generator model than a specific model. As such, it can be adapted to any use case. The big drawback here is its complexity. It demands a lot of tuning to make it work and usually needs a huge amount of samples.</li>
+<li><strong>Variational Autoencoders (VAE)</strong> is a lot simpler and adapted to smaller datasets. but it&rsquo;s not well suited to sparse or sequential data.</li>
+<li><strong>Autoregressive Transformers</strong> is of intermediate complexity. While it is used in the literature in the context of huge datasets, it isn&rsquo;t intrinsically limited to those. It&rsquo;s also, by default, suited to sequential data (instead of sets) and cannot generate quantities, but a study of the model details shows that it can be adapted.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GAN</th>
+<th>VAE</th>
+<th>Transformer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complexity</td>
+<td>High</td>
+<td>Low</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Adaptability to sparse data</td>
+<td>Medium</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>non sequential data</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Adaptable</td>
+</tr>
+<tr>
+<td>data without geometry</td>
+<td>Adaptable</td>
+<td>Yes</td>
+<td>Adaptable</td>
+</tr>
+<tr>
+<td>generate quantities</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Because it&rsquo;s simpler than GANs and not subject to <a href="TODO" rel="">Posterior Collapse</a> like VAEs, we will study further the Transformer model in the continuation of the article.</p>
+<blockquote>
+<p>Remark: because it&rsquo;s so simple to implement, I actually made a model based on a VAE architecture, but I could not allievate the Posterior Collapse issue enough to make it usefull. In practical terms, it means that</p>
+</blockquote>
+<h2 id="3-define-an-evaluation-metric-to-measure-your-progress">3. Define an <em>evaluation metric</em> to measure your progress</h2>
+<p>Generate ideas of potential recipe</p>
+<p>of <em>ThisDishDoesNotExists</em>:</p>
+<p>TODO NOT SEQUENTIEL, on passe iterativement par toutes les étapes.</p>
+<p>EN COURS:
+when you are left on your own, the task is a bit more daunting
+What you need is a plan, and follows ideas if you cannot copies models
+or ready-made solutions.</p>
+<p>When possible</p>
+<p>The current process to build a deep learning is often the following</p>
+<p>If you know one concept</p>
+<p>There is three kinds of jobs in the deep learning world.</p>
+<p>Faire une intro en bullet points ?</p>
+<p>RNN is dead. Transformer architecture took NLP by storm, improving state of the art in all NLP tasks by leaps and bounds. Computer vision is following the same path.</p>
+<p>Transformer architecture</p>
+<p>By far, the most common usage</p>
+<p>parler de TRANSFERT LEARNING</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>&lt;! &ndash; Ajout par ajout: code + schema&gt;</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="how-are-you">How are you</h1>
+<p>fine</p>
+<h2 id="subtitle">Subtitle</h2>
+<p>finefine</p>
+<h3 id="subtitle-2">Subtitle 2</h3>
+<p>Some content</p>
+<h4 id="subtitle-3">subtitle 3</h4>
+<p><strong>gras</strong>
 <em>italic</em>
 <del>barré</del>
-<strong>lol</strong></p><blockquote><p>retrait
-retrait2</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>fix_hostname</span><span class=p>(</span><span class=n>hostname</span><span class=p>):</span>
-</span></span><span class=line><span class=cl>    <span class=n>hostname</span> <span class=o>=</span> <span class=n>re</span><span class=o>.</span><span class=n>sub</span><span class=p>(</span><span class=sa>r</span><span class=s1>&#39;[</span><span class=se>\\</span><span class=s1>/:&#34;*?&lt;&gt;|]+&#39;</span><span class=p>,</span> <span class=s2>&#34;-&#34;</span><span class=p>,</span> <span class=n>hostname</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=n>hostname</span> <span class=o>=</span> <span class=n>hostname</span><span class=o>.</span><span class=n>lower</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>hostname</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=n>hostname</span> <span class=o>=</span> <span class=n>fix_hostname</span><span class=p>(</span><span class=n>device</span><span class=p>[</span><span class=s2>&#34;name&#34;</span><span class=p>])</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nx>func</span> <span class=nx>GetTitleFunc</span><span class=p>(</span><span class=nx>style</span> <span class=nx>string</span><span class=p>)</span> <span class=nx>func</span><span class=p>(</span><span class=nx>s</span> <span class=nx>string</span><span class=p>)</span> <span class=nx>string</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl> <span class=k>switch</span> <span class=nx>strings</span><span class=p>.</span><span class=nx>ToLower</span><span class=p>(</span><span class=nx>style</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl> <span class=k>case</span> <span class=s2>&#34;go&#34;</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>   <span class=k>return</span> <span class=nx>strings</span><span class=p>.</span><span class=nx>Title</span>
-</span></span><span class=line><span class=cl> <span class=k>case</span> <span class=s2>&#34;chicago&#34;</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>   <span class=k>return</span> <span class=nx>transform</span><span class=p>.</span><span class=nx>NewTitleConverter</span><span class=p>(</span><span class=nx>transform</span><span class=p>.</span><span class=nx>ChicagoStyle</span><span class=p>)</span>
-</span></span><span class=line><span class=cl> <span class=k>default</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>   <span class=k>return</span> <span class=nx>transform</span><span class=p>.</span><span class=nx>NewTitleConverter</span><span class=p>(</span><span class=nx>transform</span><span class=p>.</span><span class=nx>APStyle</span><span class=p>)</span>
-</span></span><span class=line><span class=cl> <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></div><p>$\int_{-\infty}^{\infty} e^{-x^2} dx$.</p><p>$$\int_{-\infty}^{\infty} e^{-x^2} dx$$.</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>Updated on 2022-07-15</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/>Home</a></span></section></div><div class=post-nav></div></div></article></div></main></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
-</a><a href=# id=view-comments class=fixed-button title="View Comments"><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><script type=text/javascript src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{}}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
+<strong>lol</strong></p>
+<blockquote>
+<p>retrait
+retrait2</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fix_hostname</span><span class="p">(</span><span class="n">hostname</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hostname</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[</span><span class="se">\\</span><span class="s1">/:&#34;*?&lt;&gt;|]+&#39;</span><span class="p">,</span> <span class="s2">&#34;-&#34;</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hostname</span> <span class="o">=</span> <span class="n">hostname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">hostname</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hostname</span> <span class="o">=</span> <span class="n">fix_hostname</span><span class="p">(</span><span class="n">device</span><span class="p">[</span><span class="s2">&#34;name&#34;</span><span class="p">])</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">func</span> <span class="nx">GetTitleFunc</span><span class="p">(</span><span class="nx">style</span> <span class="nx">string</span><span class="p">)</span> <span class="nx">func</span><span class="p">(</span><span class="nx">s</span> <span class="nx">string</span><span class="p">)</span> <span class="nx">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">switch</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">style</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="s2">&#34;go&#34;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Title</span>
+</span></span><span class="line"><span class="cl"> <span class="k">case</span> <span class="s2">&#34;chicago&#34;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="nx">transform</span><span class="p">.</span><span class="nx">NewTitleConverter</span><span class="p">(</span><span class="nx">transform</span><span class="p">.</span><span class="nx">ChicagoStyle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="nx">transform</span><span class="p">.</span><span class="nx">NewTitleConverter</span><span class="p">(</span><span class="nx">transform</span><span class="p">.</span><span class="nx">APStyle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>$\int_{-\infty}^{\infty} e^{-x^2} dx$.</p>
+<p>$$\int_{-\infty}^{\infty} e^{-x^2} dx$$.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-07-15</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/s-adapter-ou-s-effondrer/" class="prev" rel="prev" title="s&#39;adapter ou s&#39;effondrer"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>s'adapter ou s'effondrer</a>
+            <a href="/posts/adapt-transformer-architecture-to-set-generation/" class="next" rel="next" title="How to adapt the Transformer architecture to generate Sets">How to adapt the Transformer architecture to generate Sets<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

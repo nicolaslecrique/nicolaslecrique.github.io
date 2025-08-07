@@ -1,1 +1,104 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - Nicolas Lecrique</title><link>https://nicolaslecrique.github.io/posts/</link><description>All Posts | Nicolas Lecrique</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 28 Dec 2022 10:48:07 +0200</lastBuildDate><atom:link href="https://nicolaslecrique.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>DeepLearning.AI MLOps Specialization notes</title><link>https://nicolaslecrique.github.io/posts/mlops-specialization/</link><pubDate>Wed, 28 Dec 2022 10:48:07 +0200</pubDate><author>Nicolas Lecrique</author><guid>https://nicolaslecrique.github.io/posts/mlops-specialization/</guid><description>DeepLearning.AI MLOps Specialization notes</description></item><item><title>Statistics and Machine Learning, the basics (WIP)</title><link>https://nicolaslecrique.github.io/posts/statistics-machine-learning-basics/</link><pubDate>Mon, 12 Dec 2022 08:48:07 +0200</pubDate><author>Nicolas Lecrique</author><guid>https://nicolaslecrique.github.io/posts/statistics-machine-learning-basics/</guid><description>&lt;p>The objective of this post is to recapitulate the basics of statistics and machine learning following a glossary form.&lt;/p></description></item><item><title>Python cheatsheets for machine learning</title><link>https://nicolaslecrique.github.io/posts/python-cheat-sheet/</link><pubDate>Sun, 18 Sep 2022 10:48:07 +0200</pubDate><author>Nicolas Lecrique</author><guid>https://nicolaslecrique.github.io/posts/python-cheat-sheet/</guid><description>&lt;p>A list of my Python cheatsheets for machine learning and more&lt;/p></description></item><item><title>How to adapt the Transformer architecture to generate Sets</title><link>https://nicolaslecrique.github.io/posts/adapt-transformer-architecture-to-set-generation/</link><pubDate>Fri, 15 Jul 2022 10:48:07 +0200</pubDate><author>Nicolas Lecrique</author><guid>https://nicolaslecrique.github.io/posts/adapt-transformer-architecture-to-set-generation/</guid><description>&lt;p>Generation is one of the most complex tasks in Machine Learning. There is a huge literature about images and text. But how do you generate sets?&lt;/p></description></item><item><title>Une croissance verte est-elle crédible? Calculons</title><link>https://nicolaslecrique.github.io/posts/croissance-verte/</link><pubDate>Fri, 15 Jul 2022 10:48:07 +0200</pubDate><author>Nicolas Lecrique</author><guid>https://nicolaslecrique.github.io/posts/croissance-verte/</guid><description>&lt;p>Sortons des idéologies, et faisons un rapide calcul pour voir si l&amp;rsquo;on peut concilier croissance économique de long terme et écologie.&lt;/p></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Nicolas Lecrique</title>
+        <link>http://localhost:1313/posts/</link>
+        <description>All Posts | Nicolas Lecrique</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 01 Aug 2023 10:48:07 &#43;0200</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Notes from the Deep Reinforcement Learning Course by HuggingFace</title>
+    <link>http://localhost:1313/posts/deep-reinforcement-learning-hugging-face-course/</link>
+    <pubDate>Tue, 01 Aug 2023 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/deep-reinforcement-learning-hugging-face-course/</guid>
+    <description><![CDATA[Notes from the Deep Reinforcement Learning Course by HuggingFace UNIT 1. INTRODUCTION TO DEEP REINFORCEMENT LEARNING Definition Reinforcement learning is a framework where an agent learns by doing actions within an environment and receiving rewards
+Return function Let $r_t$ be the reward received at the time step $t$.The cumulative reward(=return) $R(\tau)$ received from time step $t$, following the trajectory $\tau$ (sequence of states/actions) with a discount rate $\gamma$ is defined by:]]></description>
+</item>
+<item>
+    <title>DeepLearning.AI MLOps Specialization notes</title>
+    <link>http://localhost:1313/posts/mlops-specialization/</link>
+    <pubDate>Wed, 28 Dec 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/mlops-specialization/</guid>
+    <description><![CDATA[DeepLearning.AI MLOps Specialization notes Course 1: Introduction to Machine Learning in Production Week 1: Overview of the ML Lifecycle and Deployment Concept drift / Data drift When data in production diverges from training data.
+Steps of a ML project Scoping Data modeling Deployment This is not a linear but an iterative process.
+Deployment patterns gradual (Canary) deployment: Send an increasing proportion of traffic to the new version. blue-green deployment: Add a router between the old and new algorithm then switch, when we have to switch all users at once but are able to rollback instantly.]]></description>
+</item>
+<item>
+    <title>Kubernetes concepts</title>
+    <link>http://localhost:1313/posts/kubernetes-concepts/</link>
+    <pubDate>Tue, 27 Dec 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/kubernetes-concepts/</guid>
+    <description><![CDATA[Kubernetes concepts Node: server (physical or VM)
+Pod: low level abstraction over a container (abstract docker or another container technology). Usually one container by pod
+each pod has its own virtual IP address (internal to K8). if The pod die, the new one has a new Ip address.
+Service component: a permanent IP address that can be attached to each pod so pods can communicates with each others. It&rsquo;s also a Load balancer to distribute requests to pods less busy (which are replacted)]]></description>
+</item>
+<item>
+    <title>Statistics and Machine Learning, the basics (WIP)</title>
+    <link>http://localhost:1313/posts/statistics-machine-learning-basics/</link>
+    <pubDate>Mon, 12 Dec 2022 08:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/statistics-machine-learning-basics/</guid>
+    <description><![CDATA[<p>The objective of this post is to recapitulate the basics of statistics and machine learning following a glossary form.</p>]]></description>
+</item>
+<item>
+    <title>Les dangers de la vulgarisation scientifique</title>
+    <link>http://localhost:1313/posts/dangers-journalisme-vulgarisation-scientifique/</link>
+    <pubDate>Wed, 12 Oct 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/dangers-journalisme-vulgarisation-scientifique/</guid>
+    <description><![CDATA[<p>Quand les erreurs journalistiques deviennent letales</p>]]></description>
+</item>
+<item>
+    <title>Python cheatsheets for machine learning</title>
+    <link>http://localhost:1313/posts/python-cheat-sheet/</link>
+    <pubDate>Sun, 18 Sep 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/python-cheat-sheet/</guid>
+    <description><![CDATA[<p>A list of my Python cheatsheets for machine learning and more</p>]]></description>
+</item>
+<item>
+    <title>collapse</title>
+    <link>http://localhost:1313/posts/collapse/</link>
+    <pubDate>Fri, 15 Jul 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/collapse/</guid>
+    <description><![CDATA[baisse de la conso pétrole et gaz
+Effet d&rsquo;ordre 1
+que ce soit par épuisement des ressources, conflits, ou consience écologique, la production d&rsquo;énergie fossile va baisser
+les énergies fossiles représentent la grande majorité de la production d&rsquo;énergie
+si la production d&rsquo;énergie baisse, la production de biens, d&rsquo;infrastructures et de services va baisser.
+le PIB et le pouvoir d&rsquo;achat va diminuer, les prix vont augmenter
+Effet d&rsquo;ordre 2
+L&rsquo;énergie devenant le facteur limitant de l&rsquo;économie, celle ci va devenir cruciale et chère:]]></description>
+</item>
+<item>
+    <title>How to adapt the Transformer architecture to generate Sets</title>
+    <link>http://localhost:1313/posts/adapt-transformer-architecture-to-set-generation/</link>
+    <pubDate>Fri, 15 Jul 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/adapt-transformer-architecture-to-set-generation/</guid>
+    <description><![CDATA[<p>Generation is one of the most complex tasks in Machine Learning. There is a huge literature about images and text. But how do you generate sets?</p>]]></description>
+</item>
+<item>
+    <title>How to build a Transformer model from scratch with 4000 samples? A case study of ThisDishDoesNotExist.</title>
+    <link>http://localhost:1313/posts/this-recipe-does-not-exist/</link>
+    <pubDate>Fri, 15 Jul 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/this-recipe-does-not-exist/</guid>
+    <description><![CDATA[<p>Away from GAFAM and their trillion parameter models, how to harness the power of Deep Learning for the rest of us?</p>]]></description>
+</item>
+<item>
+    <title>s&#39;adapter ou s&#39;effondrer</title>
+    <link>http://localhost:1313/posts/s-adapter-ou-s-effondrer/</link>
+    <pubDate>Fri, 15 Jul 2022 10:48:07 &#43;0200</pubDate>
+    <author>Nicolas Lecrique</author>
+    <guid>http://localhost:1313/posts/s-adapter-ou-s-effondrer/</guid>
+    <description><![CDATA[l&rsquo;argent ne donne pas un droit à polluer plus
+Justification des inégalités, du capitalisme et du libéralisme.
+faire grossir le gateau: si tu créé plus, si tu travaille plus tu gagne plus propriété privé et héritage 2 arguments entendables
+Ca ne marche pas pour l&rsquo;environnement
+c&rsquo;est un gateau fixe, un bien en quantité fini il appartient à tout le monde et à personne =&gt; donc il n&rsquo;y a aucune raison morale que les riches puissent polluer plus]]></description>
+</item>
+</channel>
+</rss>

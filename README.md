@@ -25,3 +25,6 @@ In debug, run website using
 > hugo --minify
 
 to build /docs folder (will be deployed to github pages)
+
+* push to main
+

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Kubernetes concepts - Nicolas Lecrique</title><meta name="Description" content="Kubernetes conepts"><meta property="og:title" content="Kubernetes concepts" />
+<meta property="og:description" content="Kubernetes conepts" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/kubernetes-concepts/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-27T10:48:07+02:00" />
+<meta property="article:modified_time" content="2022-12-27T10:48:07+02:00" /><meta property="og:site_name" content="Nicolas Lecrique" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Kubernetes concepts"/>
+<meta name="twitter:description" content="Kubernetes conepts"/>
+<meta name="application-name" content="Nicolas Lecrique">
+<meta name="apple-mobile-web-app-title" content="Nicolas Lecrique"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/kubernetes-concepts/" /><link rel="prev" href="http://localhost:1313/posts/statistics-machine-learning-basics/" /><link rel="next" href="http://localhost:1313/posts/mlops-specialization/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Kubernetes concepts",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/kubernetes-concepts\/"
+        },"genre": "posts","wordcount":  815 ,
+        "url": "http:\/\/localhost:1313\/posts\/kubernetes-concepts\/","datePublished": "2022-12-27T10:48:07+02:00","dateModified": "2022-12-27T10:48:07+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nicolas Lecrique"
+            },"description": "Kubernetes conepts"
+    }
+    </script>
+    
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+</head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nicolas Lecrique">Nicolas Lecrique</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nicolas Lecrique">Nicolas Lecrique</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Kubernetes concepts</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nicolas Lecrique</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-27">2022-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;815 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#minikube-and-kubectl">Minikube and Kubectl</a></li>
+        <li><a href="#heading"></a></li>
+      </ul>
+    </li>
+    <li><a href="#what-is-k8s-">What is K8s ?</a></li>
+    <li><a href="#main-k8s-components">Main K8s components</a></li>
+    <li><a href="#k8s-architecture">K8s Architecture</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="kubernetes-concepts">Kubernetes concepts</h1>
+<ul>
+<li>
+<p>Node: server (physical or VM)</p>
+</li>
+<li>
+<p>Pod: low level abstraction over a container (abstract docker or another container technology). Usually one container by pod</p>
+</li>
+<li>
+<p>each pod has its own virtual IP address (internal to K8). if The pod die, the new one has a new Ip address.</p>
+</li>
+<li>
+<p>Service component: a permanent IP address that can be attached to each pod so pods can communicates with each others. It&rsquo;s also a Load balancer to distribute requests to pods less busy (which are replacted)</p>
+</li>
+<li>
+<p>External service cmponent: service visible to the outside</p>
+</li>
+<li>
+<p>Component called &ldquo;ingress&rdquo;: to have clean URL on a service (instead of IP)</p>
+</li>
+<li>
+<p>Component: &ldquo;ConfigMap&rdquo;: app configuration (databse Urls, etc&hellip;)</p>
+</li>
+<li>
+<p>component &ldquo;Secret&rdquo;: configMap but to store secrets, stored in base54 encoded (passwords, certificates)</p>
+</li>
+<li>
+<p>component &ldquo;Volumnes&rdquo;: attaches physical storage to pods (local machine or external disk). used for DB, because k8 doesn&rsquo;t manage any peristence</p>
+</li>
+<li>
+<p>component &ldquo;Deployment&rdquo;: blueprint to create (and replicate) pods. only for stateless pods</p>
+</li>
+<li>
+<p>component &ldquo;StatefulSet&rdquo;: like deployment but manage stateful pods like DB (to prevent several pods to create inconsistencies in db by concurrent read.writes). it manages read and write roles for pods. NB: it&rsquo;s complex, a common practice is to host database ouside the k8 cluster.</p>
+</li>
+</ul>
+<p>====</p>
+<p>basic architecture:</p>
+<ul>
+<li>
+<p>Nodes: &ldquo;worker server&rdquo;: run multiple pods</p>
+</li>
+<li>
+<p>Installed on each nodes:</p>
+<ul>
+<li>container runtime (docker)</li>
+<li>kubelet: interact with the machine and the container runtime (docker)</li>
+<li>kube proxy: forwarding requests to pods (smart: sending request on local pod if possible)</li>
+</ul>
+</li>
+<li>
+<p>&ldquo;Master Nodes&rdquo;. several services:</p>
+<ul>
+<li>Api Server: entry point to the cluster, cluster gateway to external admin (by UI, command Line, API); It validate requests then forward to other Master services</li>
+<li>&ldquo;Scheduler&rdquo;: when requested by user, find best node to create a new pod, the ask kubelet on the node to start the container</li>
+<li>&ldquo;Controller manager&rdquo;: detect state changes (like a pod crashing) and if needed ask scheduler to restart pods</li>
+<li>&ldquo;etcd&rdquo;: key-value store of cluster states: register all cluster states informations. distributed storage among all the master nodes.</li>
+</ul>
+</li>
+</ul>
+<p>=====</p>
+<h3 id="minikube-and-kubectl">Minikube and Kubectl</h3>
+<ul>
+<li>
+<p>Minikube: One Node K8s cluster on local in a virtual box. One node that run worker AND master processes. usefull on dev.</p>
+</li>
+<li>
+<p>kubectl: command line to interact with the K8 cluster (minikube or cloud). connect to APi server on master.</p>
+</li>
+<li>
+<p>Installation: need hypervisor (to run VM) to create Minikube k8 cluster (ex: hyperkit). Nb: minikube install kubeCTL also, and docker too.</p>
+</li>
+</ul>
+<p>===</p>
+<p>commands kubectl</p>
+<ul>
+<li>kubectl get node</li>
+<li>kubectl get pod</li>
+<li>kubectl get services</li>
+<li>kubectl create deployment $NAME &ndash;image=$DOCKER_IMAGE</li>
+<li>kubectl get deployment</li>
+<li>kubectl get replicaset</li>
+</ul>
+<p>replicaset: manages the replicas of a pod. admin work with deployments, replicaset is managed by k8s</p>
+<p>layers:
+deploiyment manages a replicaset, manages replica of pods, which encapsulate containers</p>
+<p>toute la config du deployment est dans un fichier yaml</p>
+<p>======</p>
+<p>debugging pods:</p>
+<ul>
+<li>kubectl logs $PODNAME</li>
+</ul>
+<p>displays app logs</p>
+<ul>
+<li>kubectl exec -it $PODNAME &ndash; bin/bash: get command line into the container</li>
+</ul>
+<p>create/delete etc&hellip;is done at deployement level, everything under (replica set, pods) is done automatically</p>
+<p>=======</p>
+<p>K8 configuration files: all deployment options</p>
+<ul>
+<li>kubectl apply -f $CONFIG_FILE.yaml</li>
+</ul>
+<p>will create or update the deployment</p>
+<p>same thing with service, volumes&hellip;</p>
+<p>====</p>
+<p>Config file</p>
+<p>one component by component (deployment/service&hellip;)</p>
+<p>3 parts to config file:</p>
+<ul>
+<li>metadata: api version, component kind</li>
+<li>specification: specific to component kind</li>
+<li>status: generated and updated</li>
+</ul>
+<p>info about status comes from &ldquo;etcd&rdquo;</p>
+<h5 id="file-format">file format</h5>
+<p>yaml / strict indentiation -&gt; yaml validator</p>
+<p>thoses configs are stored with app code
+(&ldquo;infrastructure as code&rdquo;)
+or its own repository</p>
+<p>pods are defined inside of deployment config (image&hellip;)</p>
+<p>in pod config, key-value pairs (labels)</p>
+<p>in pod metadata (inside deployment)</p>
+<p>la commande kubectl apply will modify the config file with status (not the original but a copy)</p>
+<h4 id="complete-app-setup">complete app setup</h4>
+<p>il faut choisir l&rsquo;ordre decreation des deployment s&rsquo;ils se referencent les uns les autres</p>
+<p>&ldquo;&mdash;&rdquo; to put several config (deployments&hellip;) in one file</p>
+<h4 id="namespace">Namespace</h4>
+<p>virtual cluster inside a k8s cluster
+there is namespaces created by k8 (for master, admin&hellip;)</p>
+<p>namespace: group ressources for clarity, separation between teams; staging VS prod, blue/green deployment&hellip;</p>
+<p>rights restricted to namespaces by team
+limited ressources by namespace</p>
+<p>each NS must has its own configMap, idem for secret.
+A service can be shared to other namespaces</p>
+<p>some ressources are outside namespaces: ex: volumes</p>
+<p>might not be useful for small projets=&gt; they go to &ldquo;default&rdquo; namespace</p>
+<h4 id="ingress">ingress</h4>
+<p>ingress + internal service instead of external service</p>
+<p>external service: external ip adress
+ingress: routing rules: host(http adresss) and path is forwarded to service</p>
+<p>ingres controller: implementation of ingress, ex: nginx
+to evaluate the rules of the config and redirct to internal services ip</p>
+<p>each cloud provider has ingress controller implem already done</p>
+<p>on minikube, we can use nginx controller</p>
+<h4 id="helm">Helm</h4>
+<p>distribute yaml files.
+ex: elastic stack for logging with all deployment/services/volume&hellip;</p>
+<p>&ldquo;helm charts&rdquo;: bundle of yaml files
+to reuse configuration</p>
+<h3 id="heading"></h3>
+<p>1 definition des terms
+2) schema: en partant d&rsquo;une requette web
+3) config avec commentaires
+4) command lines</p>
+<h2 id="what-is-k8s-">What is K8s ?</h2>
+<h2 id="main-k8s-components">Main K8s components</h2>
+<h2 id="k8s-architecture">K8s Architecture</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-12-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/statistics-machine-learning-basics/" class="prev" rel="prev" title="Statistics and Machine Learning, the basics (WIP)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Statistics and Machine Learning, the basics (WIP)</a>
+            <a href="/posts/mlops-specialization/" class="next" rel="next" title="DeepLearning.AI MLOps Specialization notes">DeepLearning.AI MLOps Specialization notes<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
