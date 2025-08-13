@@ -50,6 +50,9 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) log \frac{P(x)}{Q(x)}$
 * __Trajectory__ $\tau:=(s_0, a_0, s_1...) \in \pi_\theta$. In our case it's only a pair prompt-completion of the probability space. 
 * __Objective function__: $J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r_{\theta_r}(s,a)]$. What we want to maximize. Here it's just finding the best model (parameterized by $\theta$) to maximize the expectation of the reward for all pairs prompt / completion. In general it would be over all trajectories with a time horizon and discount.
 
+* __Bradley-Terry model of preference__: We associate to each event $y_i$ the number $\beta_i$ such that $P(y_i > y_j)=\sigma(\beta_i-\beta_j)$, with $\sigma(x)=\frac{1}{1+e^{-x}}$ the sigmoid function.
+
+
 ## 4 Training Overview
 
 
@@ -61,3 +64,9 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) log \frac{P(x)}{Q(x)}$
 ## 6 Preference Data
 
 * __Likert scale__: ranking between 2 options with degrees (strongly prefer A, weakly...)
+
+## 7 Reward Modeling
+
+* __Standard architecture__: Linear head on top of an LLM, computed on the EOS token gives us a scalar $r_i$
+* __Loss__: We use the __Bradley-Terry model of preference__ with $\beta$ being the output of the reward model: $P(y_i > y_j)=\sigma(r_{\theta_r}(x,y_i)-r_{\theta_r}(x,y_j))$ and derive the loss by minimizing the negative log-likelyhood:
+* $\theta_r^*=argmax_{\theta_r} P(y_i > y_j)=argmin_{\theta_r} L()$ TODO
