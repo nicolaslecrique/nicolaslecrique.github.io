@@ -83,3 +83,19 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) \ln \frac{P(x)}{Q(x)}=E_P[\ln \frac{P(X)}{Q(X)}
   
 * TODO: Add pretraining gradients infos.
 
+## 9 Instruction Finetuning
+
+* Simplest method for adapting language models to a desired task.
+* Uses the same autoregressive loss function used in pretraining (but prompt is masked).
+* High-quality data is key for performance
+* 3 years ago, the standard was to use ~10k examples, now it's ~1M synthetic datasets.
+
+## 10 Rejection Sampling
+
+* Rejection sampling is a simple baseline to perform preference fine-tuning without the need of a complex RL process (like PPO...). It work like this:
+  * Generate multiple (~30 in practice) completions for each prompt of your SFT dataset
+  * Pass those completions to you Reward Model
+  * Select the best completions (top-N and/or above a global threshold)
+  * Fine-tune on next token prediction (like SFT) on those selected completions
+  * The reward model used will heavily impact the final result.
+
