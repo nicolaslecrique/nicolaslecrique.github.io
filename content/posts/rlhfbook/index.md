@@ -32,7 +32,7 @@ resources:
 
 * KL Divergence from P to Q: measure how different proba distribution Q is different from reference (true) distributions P on space $X$
 
-$D_{KL}(P|Q)=\sum_{x \in X} P(x) log \frac{P(x)}{Q(x)}$
+$D_{KL}(P|Q)=\sum_{x \in X} P(x) \ln \frac{P(x)}{Q(x)}=E_P[\ln \frac{P(X)}{Q(X)}]$
 
 
 ### NLP
@@ -76,3 +76,10 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) log \frac{P(x)}{Q(x)}$
 * __Generative Reward Model (GRM)__: Using a prompt and an llm as a RM to prevent costly labelling to train a RM. Still less performant than a dedicated RM.
 
 ## 8 Regularization
+
+* Regularization (to prevent RL overfit) is usually done on the reward function using KL divergence between a reference model (output of SFT or a previous RL iteration) and the currently trained model:
+  * $r_{reg}:=r_{\theta_r} - \lambda D_{KL}(\pi_{\theta}|\pi_{SFT})$.
+  * Note that the trained model act as the "true" probability distribution in the KL formula. This is because it's easier to implement (we sample from the trained model) and because it's OK to not generate all cases probable in the SFT model, but for the cases we do generate, we don't want to drift to far from SFT.
+  
+* TODO: Add pretraining gradients infos.
+
