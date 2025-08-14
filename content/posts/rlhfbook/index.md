@@ -46,8 +46,8 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) \ln \frac{P(x)}{Q(x)}=E_P[\ln \frac{P(X)}{Q(X)}
  
 * __State__: $s_i$, a prompt in our case
 * __Action__: $a_i$, a completion in our case
-* __Reward function__: $r:r(s_i,a_i)=r_i \in \real$. In our case it's a model, we note it $r_{\theta_r}$ with $\theta_r$ its parameters.
-* __Trajectory__ $\tau:=(s_0, a_0, s_1...) \in \pi_\theta$. In our case it's only a pair prompt-completion of the probability space. 
+* __Trajectory__ $\tau:=(s^{t_0}, a^{t_0}, s^{t_1}, a^{t_1}...) \in \pi_\theta$. In our case it's only a pair prompt-completion $(s_i,a_i)$ of the probability space. 
+* __Reward function__: $r:r(s_i,a_i)=r(\tau)=r_i \in \real$. In our case it's a model, we note it $r_{\theta_r}$ with $\theta_r$ its parameters. 
 * __Objective function__: $J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r_{\theta_r}(s,a)]$. What we want to maximize. Here it's just finding the best model (parameterized by $\theta$) to maximize the expectation of the reward for all pairs prompt / completion. In general it would be over all trajectories with a time horizon and discount.
 
 * __Bradley-Terry model of preference__: We associate to each event $y_i$ the scalar $\beta_i$ such that $P(y_i > y_j)=\sigma(\beta_i-\beta_j)$, with $\sigma(x)=\frac{1}{1+e^{-x}}$ the sigmoid function.
@@ -80,6 +80,7 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) \ln \frac{P(x)}{Q(x)}=E_P[\ln \frac{P(X)}{Q(X)}
 * Regularization (to prevent RL overfit) is usually done on the reward function using KL divergence between a reference model (output of SFT or a previous RL iteration) and the currently trained model:
   * $r_{reg}:=r_{\theta_r} - \lambda D_{KL}(\pi_{\theta}|\pi_{SFT})$.
   * Note that the trained model act as the "true" probability distribution in the KL formula. This is because it's easier to implement (we sample from the trained model) and because it's OK to not generate all cases probable in the SFT model, but for the cases we do generate, we don't want to drift to far from SFT.
+  * the divergence between probabilities is computed per token on the same output probability vector used for sampling
   
 * TODO: Add pretraining gradients infos.
 
@@ -99,3 +100,34 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) \ln \frac{P(x)}{Q(x)}=E_P[\ln \frac{P(X)}{Q(X)}
   * Fine-tune on next token prediction (like SFT) on those selected completions
   * The reward model used will heavily impact the final result.
 
+## 11 Policy Gradient Algorithms
+
+Let's go back to the objective function we want to maximize.
+
+$J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r_{\theta_r}(s_\tau,a_\tau)]$
+
+As the reward function is fixed here, let's use $r(s,a)$ to simplify notations. Rewriting as an integral, we get:
+
+$J(\pi_{\theta})=\int_{\tau \sim \pi_{\theta}}p_{\theta}(\tau)r(s_\tau,a_\tau)d\tau$
+
+To maximize it, we need to apply gradient ascent on it, and thus compute its gradient relative to the model parameters:
+
+$\nabla_{\theta} J(\pi_{\theta}) = \int_{\tau \sim \pi_{\theta}} r(s_\tau,a_\tau) \nabla_{\theta} p_{\theta}(\tau)d\tau$
+
+To compute it numerically (my Monte-Carlo), we need it back under the form of en expectation, so we need to reintroduce the factor $p_{\theta}(\tau)$ in the integral. We do this by using the __log-derivative trick__:
+
+$ log'(u)' = u'/u$
+
+We get:
+
+$\nabla_{\theta} J(\pi_{\theta}) = \int_{\tau \sim \pi_{\theta}} r(s_\tau,a_\tau) p_{\theta}(\tau) \nabla_{\theta} \ln (p_{\theta}(\tau))d\tau$
+
+We can now put it back to its Expectation form:
+
+$E_{\tau \sim \pi_{\theta}}[r(s_\tau,a_\tau)\nabla_{\theta} \ln (p_{\theta}(\tau))]$
+
+TODO
+
+par ailleurs, using tower property
+
+$E_{\tau \sim \pi_{\theta}}[b(s)\nabla_{\theta} \ln (p_{\theta}(\tau))]=E_s[b(s)E_a[\nabla_{\theta} \ln (p_{\theta}(\tau))|s]]$
