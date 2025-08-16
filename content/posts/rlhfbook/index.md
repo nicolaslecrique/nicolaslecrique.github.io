@@ -50,6 +50,14 @@ $D_{KL}(P|Q)=\sum_{x \in X} P(x) \ln \frac{P(x)}{Q(x)}=E_P[\ln \frac{P(X)}{Q(X)}
 * __Reward function__: $r:r(s_i,a_i)=r(\tau)=r_i \in \real$. In our case it's a model, we note it $r_{\theta_r}$ with $\theta_r$ its parameters. 
 * __Objective function__: $J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r_{\theta_r}(s,a)]$. What we want to maximize. Here it's just finding the best model (parameterized by $\theta$) to maximize the expectation of the reward for all pairs prompt / completion. In general it would be over all trajectories with a time horizon and discount.
 
+* __Value function__: $V^{\pi_{\theta}}(s):=E_{\tau \sim \pi_{\theta}}[r_{\theta_r}(s,a)|s]$. The expected reward for a given prompt if we follow $\pi_{\theta}$. It would be the expected total reward after initial state $s$ in the general RL setup.
+
+* __Action-Value Function__, also called __Q-function__: $Q(s,a):= r_{\theta_r}(s,a)$. The reward after action (completion) $a$. It would be the expected total reward after action $a$ in the general RL setup.
+
+* __Advantage function__: $A^{\pi_{\theta}}(s,a):=Q(s,a)-V^{\pi_{\theta}}(s)$. Advantage of a specific completion over the policy’s average for a given prompt.
+
+
+
 * __Bradley-Terry model of preference__: We associate to each event $y_i$ the scalar $\beta_i$ such that $P(y_i > y_j)=\sigma(\beta_i-\beta_j)$, with $\sigma(x)=\frac{1}{1+e^{-x}}$ the sigmoid function.
 
 
@@ -135,5 +143,7 @@ $\nabla_{\theta} J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r(s_\tau,a_\tau)\nab
 Now let's recall the __EGLP (Expected Grad-Log-Prob) lemma__ (easy demo using the log-derivative trick): $E_{X \sim P_\theta}[\nabla_{\theta} \ln (P_\theta(X))]=0$
 
 As $\pi_\theta$ is a probability distribution for a given state, this implies that for any function $b$ depending only on the state, we have:
+
+
 
 $E_{\tau \sim \pi_{\theta}}[b(s_\tau)\nabla_{\theta} \ln (\pi_\theta(s_\tau|a_\tau))]=E_{\tau \sim \pi_{\theta}}[b(s_\tau)E[\nabla_{\theta} \ln (\pi_\theta(s_\tau|a_\tau))|s_\tau]]=0$
