@@ -132,23 +132,8 @@ We can now put it back to its Expectation form and then decompose $p_{\theta}(\t
 $\nabla_{\theta} J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r(s_\tau,a_\tau)\nabla_{\theta} \ln (p_{\theta}(\tau))]=E_{\tau \sim \pi_{\theta}}[r(s_\tau,a_\tau)\nabla_{\theta} \ln (\pi_\theta(s_\tau|a_\tau))]$
 
 
-
-
 Now let's recall the __EGLP (Expected Grad-Log-Prob) lemma__ (easy demo using the log-derivative trick): $E_{X \sim P_\theta}[\nabla_{\theta} \ln (P_\theta(X))]=0$
 
-TODO: pour etendre, tower prop + multiplier par proba(S) pour renormaliser
+As $\pi_\theta$ is a probability distribution for a given state, this implies that for any function $b$ depending only on the state, we have:
 
-
-
-
-TODO
-
-par ailleurs, using tower property
-
-$E_{\tau \sim \pi_{\theta}}[b(s)\nabla_{\theta} \ln (p_{\theta}(\tau))]=E_s[b(s)E_a[\nabla_{\theta} \ln (p_{\theta}(\tau))|s]]$
-
-$=E_s[b(s)E_a[\frac{p(s)}{p(s)}\nabla_{\theta} \ln (p_{\theta}(\tau))|s]]$
-
-
-
-E[X*Y]=E[E[X*Y|Y]]=E[Y*E[X|Y]]
+$E_{\tau \sim \pi_{\theta}}[b(s_\tau)\nabla_{\theta} \ln (\pi_\theta(s_\tau|a_\tau))]=E_{\tau \sim \pi_{\theta}}[b(s_\tau)E[\nabla_{\theta} \ln (\pi_\theta(s_\tau|a_\tau))|s_\tau]]=0$
