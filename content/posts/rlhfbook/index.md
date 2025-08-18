@@ -161,16 +161,39 @@ And thus for any b:
 
 $\nabla_{\theta} J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[(r(s,a)-b(s))\nabla_{\theta} \ln (\pi_\theta(s|a))]$
 
-We would like to choose the function b to minimize the variance of the estimator of the gradient.
+We would like to find the function $b$ that minimizes the variance of the estimator of the gradient.
 
-For a given $s$
+Finding $b$ is finding the value $b(s)$ for any $s$. For a given $s$, the variance of the estimator is
 
+$Var(g(s)):=E[g(s)^2]-E[g(s)]^2$ with
 
+$g:g(s)=(r(s,a)-b(s))\nabla_{\theta} \ln (\pi_\theta(s|a))$
 
+Here, $a$ and thus $g(s)$ are random variables, $s$ is fixed.
 
+The second term does not depend on $b$ (as we just showed)
+
+As $s$ is fixed, let's set $R:=r(s,a)$, $b:=b(s)$, $L:=\nabla_{\theta} \ln (\pi_\theta(s|a))$
+
+We have:
+
+$min_b E[(R-b)^2L^2]=min_b b^2E[L^2]-2bE[RL^2]$
+
+This is a second degree equation in $b$, its optimal is such that:
+
+$2bE[L^2]-2E[RL^2]=0$
+
+This gives us:
+
+$b=\frac{E[RL^2]}{E[L^2]}$
+
+We then make the approcimation that R and L are independent variables (works OK in practice), to conclude that the optimal function is
+
+$b(s):=E_{\tau \sim \pi_{\theta}}[r(s,a)|s]=V^{\pi_{\theta}}(s)$
 
 By setting $b(s):=V^{\pi_{\theta}}(s)$ and reminding that $Q(s,a):= r(s,a)$, we can finally rewrite the gradient as:
 
 $\nabla_{\theta} J(\pi_{\theta})==E_{\tau \sim \pi_{\theta}}[A^{\pi_{\theta}}(s,a)\nabla_{\theta} \ln (\pi_\theta(s|a))]$
 
-TODO 1) show how that this minimizes variance.
+
+TODO: variance OK, optimal step etc... TODO
