@@ -139,6 +139,8 @@ $\nabla_{\theta} J(\pi_{\theta}) = \int_{\tau \sim \pi_{\theta}} r(s,a) p_{\thet
 
 We can now put it back to its Expectation form and then decompose $p_{\theta}(\tau)$:
 
+-----
+
 $\nabla_{\theta} J(\pi_{\theta})=E_{\tau \sim \pi_{\theta}}[r(s,a)\nabla_{\theta} \ln (p_{\theta}(\tau))]=E_{\tau \sim \pi_{\theta}}[r(s,a)\nabla_{\theta} \ln (\pi_\theta(s|a))]$
 
 We now have the cannonical expression to compute the gradient and thus train or model:
@@ -150,6 +152,7 @@ But there is still 2 practical issues:
 * In practice, the variance of the estimator of the gradient is too high: the reward for different prompts can be very different.
 * We don't know what is a proper step $\alpha$ to update $\theta$ (we cannot just observe the loss as in a usual training, because there is no ground truth as the training data itself is sampled from the current model)
 
+-----
 
 Now let's recall the __EGLP (Expected Grad-Log-Prob) lemma__ (easy demo using the log-derivative trick): $E_{X \sim P_\theta}[\nabla_{\theta} \ln (P_\theta(X))]=0$
 
@@ -193,7 +196,89 @@ $b(s):=E_{\tau \sim \pi_{\theta}}[r(s,a)|s]=V^{\pi_{\theta}}(s)$
 
 By setting $b(s):=V^{\pi_{\theta}}(s)$ and reminding that $Q(s,a):= r(s,a)$, we can finally rewrite the gradient as:
 
+
+----
+
 $\nabla_{\theta} J(\pi_{\theta})==E_{\tau \sim \pi_{\theta}}[A^{\pi_{\theta}}(s,a)\nabla_{\theta} \ln (\pi_\theta(s|a))]$
+
+-----
+
+This gives us a second fomulation numerically computable. In practice, it just mean that, compared to the first naïve algorithm, we use the average reward for each prompt to normalize the reward of a given completion.
+
+This is called the "Vanilla Policy Gradient" and solve the variance issue.
+
+But now we have to 
+
+
+=> "value network" also called "critic" to compute V(s), trained as a head on the reward llm my standard MSE
+
+
+-----
+
+
+
+The Performance Difference Lemma (PDL)
+
+par def:
+
+
+
+$J(\pi)=E_{\tau \sim \pi}[r(s_\tau,a_\tau)]$
+
+$J(\pi')=E_{\tau \sim \pi'}[r(s_\tau,a_\tau)]$
+
+$= \int_{\tau \sim \pi} P_{\pi}(\tau) r(s_\tau,a_\tau)d\tau$
+
+$= \int_{\tau \sim \pi} P_{\pi}(\tau) * \frac{P_{\pi'}(\tau)}{P_{\pi'}(\tau)}  r(s_\tau,a_\tau)d\tau$
+
+
+
+$=E_{\tau \sim \pi'}[\frac{P_{\pi}(\tau)}{P_{\pi'}(\tau)}r(s_\tau,a_\tau)]$
+
+
+$=E_{\tau \sim \pi'}[\frac{\pi_(\tau)}{\pi'(\tau)}r(s_\tau,a_\tau)]$
+
+
+$J'-J=E_{\pi'}[r(1-\frac{\pi}{\pi'})]$
+
+$J'= E[r - E[r\frac{\pi'}{\pi}|s]]$
+
+$J'-J=E[A]$
+
+
+$A_pi(s,a)=r(s,a)-E_pi[r(s,a)|s]$
+
 
 
 TODO: variance OK, optimal step etc... TODO
+
+----------------
+
+$A^{\pi}(s,a):=Q(s,a)-V^{\pi}(s)$
+
+
+$V^{\pi}(s):=E_{\tau \sim \pi}[r(s,a)|s]$
+
+$V^{\pi}(s):=E_{\tau \sim \pi'}[\frac{\pi_(\tau)}{\pi'(\tau)}r(s,a)|s]$
+
+
+$A^{\pi}(s,a):=Q(s,a)-V^{\pi}(s)$
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------
+
+## References
+
+https://omnisafe.readthedocs.io/en/latest/baserl/trpo.html#appendix-theorem1
+
