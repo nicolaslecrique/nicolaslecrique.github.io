@@ -1,7 +1,7 @@
 ---
 title: 'RLHF Book, Reinforcement Learning from Human Feedback, Nathan Lambert'
 date: 2025-08-06T10:48:07+02:00
-draft: true
+draft: false
 math: true
 images: []
 description: ''
@@ -206,15 +206,18 @@ In practice, we train an llm with a specific head, with a usual MSE loss using t
 
 ### TRPO
 
-With the above algorithm, we don't know what is a proper step $\alpha$ to update $\theta$. This is important because we cannot just observe the loss as in a usual training, because there is no ground truth as the training data itself is sampled from the current model.
+The above algorithm still present 2 issues:
 
-TRPO aims to adress this by giving us a gradient update that is the biggest "safe" step possible.
+* We don't know what is a proper step $\alpha$ to update $\theta$. In practice, the "adequat" value of $\alpha$ change widely during the training, making the convergence unstable. This is especially important because we cannot just observe the loss as in a usual training, because there is no ground truth as the training data itself is sampled from the current model.
 
+* Because the Expectation in the formulae is taken regarding the distribution implied by the currently trained policy, we must regenerate all paths (i.e. completions) for each gradient step, which is computationally very intensive
 
-But now we have to 
+TRPO aims to adress those issues by:
+* giving us a bound estimate of what is the maximal "safe" step
+* expressing the expression in the formulae under a "reference" policy
 
+this by giving us a gradient update that is the biggest "safe" step possible.
 
-=> "value network" also called "critic" to compute V(s), trained as a head on the reward llm my standard MSE
 
 
 -----
@@ -285,6 +288,7 @@ $A^{\pi}(s,a):=Q(s,a)-V^{\pi}(s)$
 ## References
 
 https://omnisafe.readthedocs.io/en/latest/baserl/trpo.html#appendix-theorem1
+https://laboratoire-talia.telecom-paris.fr/wp-content/uploads/2022/11/slides-seminaire-TRPO.pdf
 
 
 
